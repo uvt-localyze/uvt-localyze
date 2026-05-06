@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Suggest a Place | UVT Localyze</title>
+
+  <meta name="description" content="Suggest places and help map the territory with UVT Localyze.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="intro2"></p>
+      </section>
+
+      <section class="card">
+
+        <label for="localNome" id="labelName"></label>
+        <input
+          id="localNome"
+          type="text"
+          autocomplete="off"
+        >
+
+        <label for="localDescricao" id="labelDesc"></label>
+        <textarea id="localDescricao"></textarea>
+
+        <label for="localFoto" id="labelPhoto"></label>
+        <input
+          type="file"
+          id="localFoto"
+          accept="image/*"
+        >
+
+        <button type="button" onclick="enviarLocal()" id="submitBtn"></button>
+
+      </section>
+
+      <section class="card impact">
+        <h3 id="guideTitle"></h3>
+
+        <p class="sub" id="guide1"></p>
+        <p class="sub" id="guide2"></p>
+      </section>
+
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open live dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="dashText"></small>
+  </a>
+
+  <script>
+    const t = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Suggest a Place | UVT Localyze",
+        metaDesc: "Suggest places and help map the territory with UVT Localyze.",
+
+        badge: "Territorial mapping",
+        title: "Suggest a meaningful place",
+        intro1: "Help map cultural, natural, social and economic points in the territory.",
+        intro2: "Each valid suggestion generates 15 UVT. Image upload will be added in the next phase.",
+
+        labelName: "Place name",
+        labelDesc: "Place description",
+        labelPhoto: "Place image (optional)",
+
+        placeholderName: "Example: waterfall, square, viewpoint, café, trail...",
+        placeholderDesc: "Why is this place important? What exists there? Who should know it?",
+
+        submitBtn: "Suggest place (+15 UVT)",
+
+        guideTitle: "What should you suggest?",
+        guide1: "You can suggest tourist spots, landscapes, businesses, cultural spaces, trails, squares or places connected to community memory.",
+        guide2: "A good description makes this data more useful for the community map. Image upload will be enabled in a future phase.",
+
+        backBtn: "← Back to actions",
+        walletBtn: "My wallet",
+
+        dashLabel: "Live panel",
+        dashText: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Indicar Local | UVT Localyze",
+        metaDesc: "Indique pontos turísticos, culturais, naturais ou comerciais e ajude a mapear o território com o UVT Localyze.",
+
+        badge: "Mapa afetivo",
+        title: "Indique um lugar especial",
+        intro1: "Ajude a mapear pontos turísticos, culturais, naturais, comerciais ou afetivos da comunidade.",
+        intro2: "Ao indicar um local válido, você gera 15 UVT. O envio de imagem será adicionado na próxima fase.",
+
+        labelName: "Nome do local",
+        labelDesc: "Descrição do local",
+        labelPhoto: "Foto do local (opcional)",
+
+        placeholderName: "Ex: Cachoeira, praça, mirante, café, trilha...",
+        placeholderDesc: "Por que esse lugar é importante? O que existe nele? Quem deveria conhecer?",
+
+        submitBtn: "Indicar local (+15 UVT)",
+
+        guideTitle: "O que vale indicar?",
+        guide1: "Pode ser um ponto turístico, uma paisagem, um comércio importante, uma memória afetiva, um espaço cultural, uma trilha, uma praça ou qualquer lugar que ajude a contar a história do território.",
+        guide2: "Uma boa descrição torna esse dado mais útil para o mapa comunitário. O envio de imagem será habilitado em uma fase futura.",
+
+        backBtn: "← Voltar às atividades",
+        walletBtn: "Ver minha carteira",
+
+        dashLabel: "Painel vivo",
+        dashText: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Indicar Lugar | UVT Localyze",
+        metaDesc: "Indica puntos turísticos, culturales, naturales o comerciales y ayuda a mapear el territorio con UVT Localyze.",
+
+        badge: "Mapa afectivo",
+        title: "Indica un lugar especial",
+        intro1: "Ayuda a mapear puntos turísticos, culturales, naturales, comerciales o afectivos de la comunidad.",
+        intro2: "Al indicar un lugar válido, generas 15 UVT. La carga de imágenes será añadida en la próxima fase.",
+
+        labelName: "Nombre del lugar",
+        labelDesc: "Descripción del lugar",
+        labelPhoto: "Foto del lugar (opcional)",
+
+        placeholderName: "Ej: cascada, plaza, mirador, café, sendero...",
+        placeholderDesc: "¿Por qué este lugar es importante? ¿Qué existe allí? ¿Quién debería conocerlo?",
+
+        submitBtn: "Indicar lugar (+15 UVT)",
+
+        guideTitle: "¿Qué vale indicar?",
+        guide1: "Puede ser un punto turístico, un paisaje, un comercio importante, una memoria afectiva, un espacio cultural, un sendero, una plaza o cualquier lugar que ayude a contar la historia del territorio.",
+        guide2: "Una buena descripción hace que este dato sea más útil para el mapa comunitario. La carga de imágenes será habilitada en una fase futura.",
+
+        backBtn: "← Volver a actividades",
+        walletBtn: "Ver mi cartera",
+
+        dashLabel: "Panel vivo",
+        dashText: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = t[lang] ? lang : "en";
+      const d = t[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = d.htmlLang;
+      document.title = d.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", d.metaDesc);
+      }
+
+      Object.keys(d).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = d[key];
+        }
+      });
+
+      document.getElementById("localNome").placeholder = d.placeholderName;
+      document.getElementById("localDescricao").placeholder = d.placeholderDesc;
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Community Survey | UVT Localyze</title>
+
+  <meta name="description" content="Join the community survey and help identify real territorial priorities.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <!-- =====================================================
+           3.1 INTRO
+      ====================================================== -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <!-- =====================================================
+           4. ANSWER OPTIONS
+      ====================================================== -->
+      <section class="card poll-options">
+
+        <button type="button" onclick="responderEnquete('Infraestrutura urbana')">
+          <span id="option1Title"></span>
+          <small id="option1Desc"></small>
+        </button>
+
+        <button type="button" onclick="responderEnquete('Turismo e cultura')">
+          <span id="option2Title"></span>
+          <small id="option2Desc"></small>
+        </button>
+
+        <button type="button" onclick="responderEnquete('Emprego e renda')">
+          <span id="option3Title"></span>
+          <small id="option3Desc"></small>
+        </button>
+
+        <button type="button" onclick="responderEnquete('Meio ambiente')">
+          <span id="option4Title"></span>
+          <small id="option4Desc"></small>
+        </button>
+
+        <button type="button" onclick="responderEnquete('Educação e juventude')">
+          <span id="option5Title"></span>
+          <small id="option5Desc"></small>
+        </button>
+
+      </section>
+
+
+      <!-- =====================================================
+           5. CONTEXT
+      ====================================================== -->
+      <section class="card impact">
+        <h3 id="contextTitle"></h3>
+
+        <p class="sub" id="context1"></p>
+        <p class="sub" id="context2"></p>
+      </section>
+
+
+      <!-- =====================================================
+           6. NAVIGATION
+      ====================================================== -->
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="impact.html" class="btn secondary" id="impactBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       7. FLOATING DASHBOARD
+  ====================================================== -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <!-- =====================================================
+       8. MULTILANGUAGE SCRIPT
+  ====================================================== -->
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Community Survey | UVT Localyze",
+        metaDescription: "Join the community survey and help identify real territorial priorities.",
+
+        badge: "Survey",
+        title: "Which priority deserves more attention now?",
+        intro1: "Your answer helps map real demands and guide future community actions.",
+        introNote: "By answering, you generate 5 UVT. Each user can answer only once.",
+
+        option1Title: "🛣️ Urban infrastructure",
+        option1Desc: "Streets, drainage, lighting and access",
+        option2Title: "🏞️ Tourism and culture",
+        option2Desc: "Valuing local attractions and identity",
+        option3Title: "💼 Jobs and income",
+        option3Desc: "Opportunities, businesses and training",
+        option4Title: "🌱 Environment",
+        option4Desc: "Water, trails, waste and preservation",
+        option5Title: "📚 Education and youth",
+        option5Desc: "Learning, technology and local future",
+
+        contextTitle: "Why does this question matter?",
+        context1: "The answers form one of the first signals of the system. They help identify the community's main concerns.",
+        context2: "Simple data, when accumulated, becomes territorial intelligence — and that can guide better decisions.",
+
+        backBtn: "← Back to actions",
+        impactBtn: "View collective impact",
+        dashboardBtn: "View dashboard",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Enquete Comunitária | UVT Localyze",
+        metaDescription: "Participe da enquete comunitária e ajude a identificar prioridades reais do território.",
+
+        badge: "Enquete",
+        title: "Qual prioridade merece mais atenção agora?",
+        intro1: "Sua resposta ajuda a mapear demandas reais e orientar futuras ações dentro da comunidade.",
+        introNote: "Ao responder, você gera 5 UVT. Cada usuário pode responder apenas uma vez.",
+
+        option1Title: "🛣️ Infraestrutura urbana",
+        option1Desc: "Ruas, bueiros, iluminação e acessos",
+        option2Title: "🏞️ Turismo e cultura",
+        option2Desc: "Valorização dos atrativos locais",
+        option3Title: "💼 Emprego e renda",
+        option3Desc: "Oportunidades, negócios e capacitação",
+        option4Title: "🌱 Meio ambiente",
+        option4Desc: "Água, trilhas, resíduos e preservação",
+        option5Title: "📚 Educação e juventude",
+        option5Desc: "Formação, tecnologia e futuro local",
+
+        contextTitle: "Por que essa pergunta importa?",
+        context1: "As respostas formam um dos primeiros sinais do sistema. Elas ajudam a identificar onde estão as principais preocupações da comunidade.",
+        context2: "Esse tipo de dado simples, quando acumulado, se transforma em leitura territorial — e é isso que orienta decisões mais inteligentes.",
+
+        backBtn: "← Voltar às atividades",
+        impactBtn: "Ver impacto coletivo",
+        dashboardBtn: "Ver painel",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Encuesta Comunitaria | UVT Localyze",
+        metaDescription: "Participa en la encuesta comunitaria y ayuda a identificar prioridades reales del territorio.",
+
+        badge: "Encuesta",
+        title: "¿Qué prioridad merece más atención ahora?",
+        intro1: "Tu respuesta ayuda a mapear demandas reales y orientar futuras acciones dentro de la comunidad.",
+        introNote: "Al responder, generas 5 UVT. Cada usuario puede responder solo una vez.",
+
+        option1Title: "🛣️ Infraestructura urbana",
+        option1Desc: "Calles, drenaje, iluminación y accesos",
+        option2Title: "🏞️ Turismo y cultura",
+        option2Desc: "Valorización de atractivos e identidad local",
+        option3Title: "💼 Empleo e ingresos",
+        option3Desc: "Oportunidades, negocios y capacitación",
+        option4Title: "🌱 Medio ambiente",
+        option4Desc: "Agua, senderos, residuos y preservación",
+        option5Title: "📚 Educación y juventud",
+        option5Desc: "Formación, tecnología y futuro local",
+
+        contextTitle: "¿Por qué importa esta pregunta?",
+        context1: "Las respuestas forman una de las primeras señales del sistema. Ayudan a identificar las principales preocupaciones de la comunidad.",
+        context2: "Este tipo de dato simple, cuando se acumula, se transforma en lectura territorial — y eso orienta decisiones más inteligentes.",
+
+        backBtn: "← Volver a actividades",
+        impactBtn: "Ver impacto colectivo",
+        dashboardBtn: "Ver panel",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+
+  <!-- =====================================================
+       9. SCRIPTS
+  ====================================================== -->
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

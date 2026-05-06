@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Community Impact | UVT Localyze</title>
+
+  <meta name="description" content="Follow the construction of the Community Living Map, the first collective project of UVT Localyze.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+  <img src="assets/Logotipo UVT Localyze.png" class="logo">
+
+  <span class="badge" id="badge"></span>
+
+  <div class="lang-switch">
+    <button onclick="setLang('pt')">🇧🇷</button>
+    <button onclick="setLang('en')">🇺🇸</button>
+    <button onclick="setLang('es')">🇪🇸</button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero card">
+  <h1 id="title"></h1>
+
+  <p class="sub" id="intro1"></p>
+  <p class="prototype-note" id="intro2"></p>
+
+  <div class="saldo-box">
+    <p id="uvtLabel"></p>
+    <h2><span id="impactoTotal">0</span> UVT</h2>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar">
+      <div class="progress-fill" id="impactoBarra"></div>
+    </div>
+
+    <p class="sub">
+      <span id="milestoneText"></span>
+      <strong id="metaImpacto">300</strong> UVT
+    </p>
+  </div>
+</section>
+
+
+<section class="card impact">
+  <h3 id="whatTitle"></h3>
+  <p class="sub" id="what1"></p>
+  <p class="sub" id="what2"></p>
+  <p class="sub" id="what3"></p>
+</section>
+
+
+<section class="card project-journey">
+  <h3 id="journeyTitle"></h3>
+  <p class="sub" id="journeyIntro"></p>
+
+  <div class="journey-progress">
+    <div class="journey-progress-fill" id="journeyProgressFill"></div>
+  </div>
+
+  <div class="journey-steps">
+    <div class="journey-step"><strong id="f1"></strong></div>
+    <div class="journey-step"><strong id="f2"></strong></div>
+    <div class="journey-step"><strong id="f3"></strong></div>
+    <div class="journey-step"><strong id="f4"></strong></div>
+    <div class="journey-step"><strong id="f5"></strong></div>
+    <div class="journey-step"><strong id="f6"></strong></div>
+    <div class="journey-step"><strong id="f7"></strong></div>
+    <div class="journey-step"><strong id="f8"></strong></div>
+  </div>
+</section>
+
+
+<section class="card impact">
+  <h3 id="uvtMeaningTitle"></h3>
+  <p class="sub" id="uvt1"></p>
+  <p class="sub" id="uvt2"></p>
+  <p class="prototype-note" id="uvt3"></p>
+</section>
+
+
+<section class="card">
+  <h3 id="ctaTitle"></h3>
+
+  <p class="sub" id="cta1"></p>
+  <p class="sub" id="cta2"></p>
+
+  <a href="poll.html" class="btn primary" id="pollBtn"></a>
+  <a href="action.html" class="btn secondary" id="actionBtn"></a>
+  <a href="dashboard.html" class="btn secondary" id="dashBtn"></a>
+  <a href="index.html" class="btn secondary" id="backBtn"></a>
+</section>
+
+</main>
+</div>
+
+
+<a href="dashboard.html" class="dashboard-floating-card">
+  <span class="dash-label" id="dashLabel"></span>
+  <strong><span id="teaserUVT">0</span> UVT</strong>
+</a>
+
+
+<script>
+const t = {
+
+en: {
+htmlLang:"en",
+pageTitle:"Community Impact | UVT Localyze",
+
+badge:"Project in progress",
+title:"Community Living Map",
+
+intro1:"This is the first collective project of UVT Localyze.",
+intro2:"Each participation helps shape a real territorial action.",
+
+uvtLabel:"UVT generated in the project",
+milestoneText:"First milestone:",
+
+whatTitle:"What are we building?",
+what1:"A participatory system to understand local problems.",
+what2:"The community defines priorities.",
+what3:"The project evolves in stages.",
+
+journeyTitle:"Project journey",
+journeyIntro:"Each phase represents progress.",
+
+f1:"Discovery",
+f2:"Direction",
+f3:"Structuring",
+f4:"Planning",
+f5:"Consolidation",
+f6:"Preparation",
+f7:"Activation",
+f8:"Execution",
+
+uvtMeaningTitle:"What does UVT mean?",
+uvt1:"It represents participation.",
+uvt2:"It creates collective intelligence.",
+uvt3:"More participation = clearer direction.",
+
+ctaTitle:"Help build the project",
+cta1:"Your participation defines direction.",
+cta2:"Small action, big impact.",
+
+pollBtn:"Answer survey",
+actionBtn:"More actions",
+dashBtn:"View dashboard",
+backBtn:"← Back",
+
+dashLabel:"Live panel"
+},
+
+pt:{
+htmlLang:"pt-BR",
+pageTitle:"Impacto | UVT",
+
+badge:"Projeto em construção",
+title:"Mapa Vivo da Comunidade",
+
+intro1:"Primeiro projeto coletivo do UVT.",
+intro2:"Cada participação molda a ação real.",
+
+uvtLabel:"UVT gerados",
+milestoneText:"Primeiro marco:",
+
+whatTitle:"O que estamos construindo?",
+what1:"Sistema participativo.",
+what2:"Comunidade define prioridades.",
+what3:"Projeto evolui em etapas.",
+
+journeyTitle:"Jornada",
+journeyIntro:"Cada fase é um avanço.",
+
+f1:"Descoberta",
+f2:"Direcionamento",
+f3:"Estruturação",
+f4:"Planejamento",
+f5:"Consolidação",
+f6:"Preparação",
+f7:"Ativação",
+f8:"Execução",
+
+uvtMeaningTitle:"O que é o UVT?",
+uvt1:"Representa participação.",
+uvt2:"Gera inteligência coletiva.",
+uvt3:"Mais participação = mais clareza.",
+
+ctaTitle:"Construa o projeto",
+cta1:"Sua participação define o caminho.",
+cta2:"Pequeno clique, grande impacto.",
+
+pollBtn:"Responder enquete",
+actionBtn:"Outras ações",
+dashBtn:"Ver painel",
+backBtn:"← Voltar",
+
+dashLabel:"Painel"
+},
+
+es:{
+htmlLang:"es",
+pageTitle:"Impacto | UVT",
+
+badge:"Proyecto en construcción",
+title:"Mapa Vivo",
+
+intro1:"Primer proyecto colectivo.",
+intro2:"Participación crea acción.",
+
+uvtLabel:"UVT generados",
+milestoneText:"Primer objetivo:",
+
+whatTitle:"¿Qué estamos creando?",
+what1:"Sistema participativo.",
+what2:"La comunidad decide.",
+what3:"Proyecto evoluciona.",
+
+journeyTitle:"Fases",
+journeyIntro:"Cada fase avanza.",
+
+f1:"Descubrimiento",
+f2:"Dirección",
+f3:"Estructura",
+f4:"Planificación",
+f5:"Consolidación",
+f6:"Preparación",
+f7:"Activación",
+f8:"Ejecución",
+
+uvtMeaningTitle:"¿Qué es UVT?",
+uvt1:"Representa participación.",
+uvt2:"Crea inteligencia colectiva.",
+uvt3:"Más participación = claridad.",
+
+ctaTitle:"Construye el proyecto",
+cta1:"Tu participación define.",
+cta2:"Pequeña acción, gran impacto.",
+
+pollBtn:"Responder encuesta",
+actionBtn:"Más acciones",
+dashBtn:"Ver panel",
+backBtn:"← Volver",
+
+dashLabel:"Panel"
+}
+};
+
+function setLang(lang){
+const selected=t[lang]?lang:"en";
+const d=t[selected];
+
+localStorage.setItem("uvt_lang",selected);
+
+document.documentElement.lang=d.htmlLang;
+document.title=d.pageTitle;
+
+Object.keys(d).forEach(k=>{
+const el=document.getElementById(k);
+if(el) el.innerText=d[k];
+});
+}
+
+const savedLang=localStorage.getItem("uvt_lang")||"en";
+setLang(savedLang);
+</script>
+
+<script type="module" src="js/firebase.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

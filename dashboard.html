@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- =====================================================
+       1. CONFIGURAÇÕES DA PÁGINA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Painel Vivo | UVT Localyze</title>
+
+  <meta name="description" content="Painel vivo do UVT Localyze com dados de participação comunitária, prioridades territoriais, impacto coletivo e leitura estratégica.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPO
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="Logotipo UVT Localyze"
+      >
+
+      <span class="badge">Painel vivo</span>
+    </header>
+
+
+    <!-- =====================================================
+         3. CONTEÚDO PRINCIPAL
+    ====================================================== -->
+    <main>
+
+      <!-- =====================================================
+           3.1 HERO / SINAL PRINCIPAL
+      ====================================================== -->
+      <section class="hero card dashboard-hero">
+        <h1>A comunidade está gerando dados.</h1>
+
+        <p class="sub">
+          Este painel mostra como participações reais podem revelar prioridades, demandas e sinais estratégicos do território.
+        </p>
+
+        <p class="prototype-note">
+          Dados em fase de protótipo. A leitura serve para demonstrar potencial de escuta comunitária, diagnóstico territorial e tomada de decisão.
+        </p>
+
+        <div class="dashboard-main-insight">
+          <span>Principal sinal detectado</span>
+          <strong id="dashboardMainSignal">Aguardando dados</strong>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           4. RESUMO EXECUTIVO
+      ====================================================== -->
+      <section class="card dashboard-reading">
+        <h3>Resumo executivo</h3>
+
+        <p class="sub">
+          O UVT Localyze transforma participação comunitária em dados estruturados. A população participa normalmente; avaliadores, instituições e possíveis financiadores conseguem acompanhar os sinais gerados pelo uso real.
+        </p>
+
+        <p class="sub">
+          A proposta é simples: ouvir melhor o território, organizar as respostas e transformar colaboração local em inteligência útil para projetos futuros.
+        </p>
+      </section>
+
+
+      <!-- =====================================================
+           5. FORÇA DA PARTICIPAÇÃO
+      ====================================================== -->
+      <section class="card">
+        <h3>Força da participação</h3>
+
+        <div class="metric-grid">
+
+          <div class="metric-card featured-metric">
+            <span>UVT gerados</span>
+            <strong id="totalUVT">0</strong>
+            <small>Valor territorial acumulado</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Participantes</span>
+            <strong id="totalParticipantes">0</strong>
+            <small>Usuários únicos identificados</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Interações</span>
+            <strong id="totalAcoes">0</strong>
+            <small>Ações registradas</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Contribuições</span>
+            <strong id="totalContribuicoes">0</strong>
+            <small>Ideias, locais e problemas</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Engajamento</span>
+            <strong id="totalEngajamento">0</strong>
+            <small>Rede e ação comunitária</small>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           6. META COLETIVA
+      ====================================================== -->
+      <section class="card impact">
+        <h3>Meta coletiva</h3>
+
+        <p class="sub">
+          A comunidade acumula UVT para revelar fases de diagnóstico, mobilização e estruturação de possíveis projetos coletivos.
+        </p>
+
+        <div class="progress-wrap">
+          <div class="progress-bar">
+            <div class="progress-fill" id="dashboardGoalBar"></div>
+          </div>
+
+          <p class="sub" id="dashboardGoalText">
+            Calculando progresso...
+          </p>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           7. PRIORIDADE TERRITORIAL / ENQUETE
+      ====================================================== -->
+      <section class="card">
+        <h3>Prioridade territorial percebida</h3>
+
+        <p class="sub">
+          Resultado parcial da consulta comunitária com base nas respostas registradas.
+        </p>
+
+        <div id="dadosEnquete">
+          <p class="sub">Carregando dados da comunidade...</p>
+        </div>
+
+        <div class="insight-box" id="insightPrincipal">
+          Aguardando dados suficientes para gerar leitura.
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           7.1 VOTAÇÃO DE PRIORIDADES
+      ====================================================== -->
+      <section class="card">
+        <h3>Votação de prioridades</h3>
+
+        <p class="sub">
+          Esta leitura mostra quais caminhos de ação estão recebendo mais votos dentro da comunidade.
+        </p>
+
+        <div id="dadosPrioridades">
+          <p class="sub">Carregando votos de prioridade...</p>
+        </div>
+
+        <div class="insight-box" id="insightPrioridade">
+          Aguardando votos suficientes para gerar leitura.
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           8. MAPA DE CONTRIBUIÇÕES
+      ====================================================== -->
+      <section class="card">
+        <h3>Mapa de contribuições</h3>
+
+        <p class="sub">
+          Além de votos e respostas rápidas, o sistema também registra sugestões, problemas, locais e ações práticas no território.
+        </p>
+
+        <div class="metric-grid">
+
+          <div class="metric-card">
+            <span>Sugestões</span>
+            <strong id="totalSugestoes">0</strong>
+            <small>Ideias enviadas</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Problemas</span>
+            <strong id="totalProblemas">0</strong>
+            <small>Demandas reportadas</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Locais indicados</span>
+            <strong id="totalLocais">0</strong>
+            <small>Pontos mapeados</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Ações comunitárias</span>
+            <strong id="totalAcoesComunitarias">0</strong>
+            <small>Participações práticas</small>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           9. LEITURA PARA HACKATHON E FINANCIADORES
+      ====================================================== -->
+      <section class="card dashboard-reading">
+        <h3>Leitura para avaliadores</h3>
+
+        <p class="sub">
+          Para o hackathon, este painel demonstra que o protótipo não é apenas uma interface: ele conecta participação real, dados territoriais e potencial de escala.
+        </p>
+
+        <p class="sub">
+          Para financiadores e instituições, o sistema mostra como pequenas comunidades podem gerar diagnósticos próprios sem depender apenas de levantamentos caros, lentos ou distantes da realidade local.
+        </p>
+
+        <p class="sub">
+          A camada futura de blockchain pode servir para auditoria de registros agregados, sem transformar a fase atual em promessa financeira ou token especulativo.
+        </p>
+      </section>
+
+
+      <!-- =====================================================
+           10. LEITURA ESTRATÉGICA
+      ====================================================== -->
+      <section class="card dashboard-reading">
+        <h3>Leitura estratégica</h3>
+
+        <p class="sub">
+          O UVT Localyze transforma participação pública em inteligência territorial: a comunidade aponta prioridades, registra demandas e gera valor dentro de um ciclo mensurável.
+        </p>
+
+        <p class="sub">
+          Esse painel não é apenas um contador. Ele é o começo de uma leitura viva do território — onde dados simples podem orientar decisões melhores.
+        </p>
+      </section>
+
+
+      <!-- =====================================================
+           11. NAVEGAÇÃO
+      ====================================================== -->
+      <section class="card nav-actions">
+        <a href="action.html" class="btn primary">Gerar novos dados</a>
+        <a href="impact.html" class="btn secondary">Ver impacto coletivo</a>
+        <a href="wallet.html" class="btn secondary">Ver minha carteira</a>
+        <a href="index.html" class="btn secondary">← Voltar ao início</a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       12. SCRIPTS
+  ====================================================== -->
+  <script type="module" src="js/firebase.js?v=7"></script>
+  <script src="js/app.js?v=7"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof renderDashboard === "function") {
+        renderDashboard();
+      }
+
+      if (typeof renderDashboardExecutiveInsight === "function") {
+        renderDashboardExecutiveInsight();
+      }
+    });
+  </script>
+
+</body>
+</html>

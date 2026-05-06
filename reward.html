@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- =====================================================
+       1. CONFIGURAÇÕES DA PÁGINA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Recompensas | UVT Localyze</title>
+
+  <meta name="description" content="Resgate imagens digitais e conquistas simbólicas usando seu saldo UVT dentro do UVT Localyze.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPO
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="Logotipo UVT Localyze"
+      >
+
+      <span class="badge">Recompensas</span>
+    </header>
+
+
+    <!-- =====================================================
+         3. CONTEÚDO PRINCIPAL
+    ====================================================== -->
+    <main>
+
+      <!-- =====================================================
+           3.1 HERO / SALDO
+      ====================================================== -->
+      <section class="hero card">
+        <h1>Galeria de conquistas</h1>
+
+        <p class="sub">
+          Use seu saldo UVT para liberar imagens digitais inspiradas na Chapada Diamantina, no território e no Ecossistema Alta Piatã.
+        </p>
+
+        <p class="prototype-note">
+          Resgatar recompensas reduz seu saldo disponível, mas não diminui seu total gerado nem sua evolução de nível.
+        </p>
+
+        <div class="saldo-box">
+          <p>Seu saldo disponível</p>
+          <h2><span id="saldo">0</span> UVT</h2>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           4. RECOMPENSAS POR NÍVEL
+      ====================================================== -->
+      <section class="card">
+        <h3>Recompensas por nível</h3>
+
+        <div class="reward-item">
+          <img
+            src="assets/Recompensa - teste UVT.png"
+            alt="Recompensa UVT Nível 1"
+          >
+
+          <h4>Nível 1 — Participante</h4>
+
+          <p class="sub">
+            Primeira conquista dentro do ciclo UVT.
+          </p>
+
+          <button onclick="trocar(10, 'assets/Recompensa - teste UVT.png')">
+            Resgatar por 10 UVT
+          </button>
+        </div>
+
+
+        <div class="reward-item">
+          <img
+            src="assets/UVT Nivel 2.png"
+            alt="Recompensa UVT Nível 2"
+          >
+
+          <h4>Nível 2 — Contribuidor</h4>
+
+          <p class="sub">
+            Para quem já começou a gerar valor recorrente para o território.
+          </p>
+
+          <button onclick="trocar(25, 'assets/UVT Nivel 2.png')">
+            Resgatar por 25 UVT
+          </button>
+        </div>
+
+
+        <div class="reward-item">
+          <img
+            src="assets/UVT Nivel 3.png"
+            alt="Recompensa UVT Nível 3"
+          >
+
+          <h4>Nível 3 — Mobilizador</h4>
+
+          <p class="sub">
+            Reconhecimento por participação ativa e contribuição constante.
+          </p>
+
+          <button onclick="trocar(50, 'assets/UVT Nivel 3.png')">
+            Resgatar por 50 UVT
+          </button>
+        </div>
+
+
+        <div class="reward-item">
+          <img
+            src="assets/UVT Nivel 4.png"
+            alt="Recompensa UVT Nível 4"
+          >
+
+          <h4>Nível 4 — Guardião Local</h4>
+
+          <p class="sub">
+            Para quem fortalece o ecossistema com presença, constância e impacto.
+          </p>
+
+          <button onclick="trocar(90, 'assets/UVT Nivel 4.png')">
+            Resgatar por 90 UVT
+          </button>
+        </div>
+
+
+        <div class="reward-item">
+          <img
+            src="assets/UVT Nivel 5.png"
+            alt="Recompensa UVT Nível 5"
+          >
+
+          <h4>Nível 5 — Embaixador do Território</h4>
+
+          <p class="sub">
+            A maior conquista simbólica desta fase do protótipo.
+          </p>
+
+          <button onclick="trocar(150, 'assets/UVT Nivel 5.png')">
+            Resgatar por 150 UVT
+          </button>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           5. EXPLICAÇÃO DA ECONOMIA
+      ====================================================== -->
+      <section class="card impact">
+        <h3>Como funcionam os resgates?</h3>
+
+        <p class="sub">
+          O saldo UVT é a parte que você pode gastar. Ele funciona como moeda de uso dentro do sistema.
+        </p>
+
+        <p class="sub">
+          Já o total gerado representa sua reputação histórica. Mesmo após resgatar uma recompensa, sua evolução de nível continua preservada.
+        </p>
+      </section>
+
+
+      <!-- =====================================================
+           6. EXTRAS DA COMUNIDADE
+      ====================================================== -->
+      <section class="card">
+        <h3>Extras da comunidade</h3>
+
+        <p class="sub">
+          Ações extras ajudam o projeto a crescer e liberam imagens especiais de apoio à iniciativa.
+        </p>
+
+        <div class="reward-item">
+          <img
+            src="assets/Imagem promocional Instagram.png"
+            alt="Imagem promocional Instagram"
+          >
+
+          <h4>Imagem especial — Instagram</h4>
+
+          <p class="sub">
+            Apoie o UVT Localyze no Instagram e libere uma imagem promocional.
+          </p>
+
+          <button onclick="extra('instagram')">
+            Apoiar no Instagram
+          </button>
+        </div>
+
+
+        <div class="reward-item">
+          <img
+            src="assets/Imagem promocional LinkedIn.png"
+            alt="Imagem promocional LinkedIn"
+          >
+
+          <h4>Imagem especial — LinkedIn</h4>
+
+          <p class="sub">
+            Apoie o UVT Localyze no LinkedIn e libere uma imagem especial.
+          </p>
+
+          <button onclick="extra('linkedin')">
+            Apoiar no LinkedIn
+          </button>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           7. NAVEGAÇÃO
+      ====================================================== -->
+      <section class="card">
+        <a href="action.html" class="btn primary">Ganhar mais UVT</a>
+        <a href="wallet.html" class="btn secondary">Ver minha carteira</a>
+        <a href="index.html" class="btn secondary">← Voltar ao início</a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       8. DASHBOARD FLUTUANTE
+  ====================================================== -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Abrir painel da comunidade">
+    <span class="dash-label">Painel vivo</span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight">Ver dados da comunidade →</small>
+  </a>
+
+
+  <!-- =====================================================
+       9. SCRIPTS
+  ====================================================== -->
+  <script type="module" src="js/firebase.js"></script>
+<script src="js/app.js"></script>
+<script src="js/wallet.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    if (window.firebaseReady) {
+      await window.firebaseReady;
+    }
+
+    if (typeof renderWallet === "function") {
+      renderWallet();
+    }
+  });
+</script>
+
+</body>
+</html>

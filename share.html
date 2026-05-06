@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Share Initiative | UVT Localyze</title>
+
+  <meta name="description" content="Recommend people, businesses or projects that can discover and strengthen UVT Localyze and the Alta Piatã Ecosystem.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <section class="card">
+        <label for="indicadoNome" id="labelName"></label>
+        <input
+          id="indicadoNome"
+          type="text"
+          autocomplete="off"
+        >
+
+        <label for="indicadoContato" id="labelContact"></label>
+        <input
+          id="indicadoContato"
+          type="text"
+          autocomplete="off"
+        >
+
+        <label for="indicadoMotivo" id="labelReason"></label>
+        <textarea id="indicadoMotivo"></textarea>
+
+        <button type="button" onclick="enviarIndicacao()" id="submitBtn"></button>
+      </section>
+
+
+      <section class="card impact">
+        <h3 id="helpTitle"></h3>
+
+        <p class="sub" id="help1"></p>
+        <p class="sub" id="help2"></p>
+      </section>
+
+
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Share Initiative | UVT Localyze",
+        metaDescription: "Recommend people, businesses or projects that can discover and strengthen UVT Localyze and the Alta Piatã Ecosystem.",
+
+        badge: "Expansion",
+        title: "Recommend someone to discover the project",
+        intro1: "Help UVT Localyze and the Alta Piatã Ecosystem reach more people, businesses, initiatives and community leaders.",
+        introNote: "By registering a valid recommendation, you generate 10 UVT.",
+
+        labelName: "Person, business or project name",
+        labelContact: "Contact or social media",
+        labelReason: "Reason for recommendation",
+
+        placeholderName: "Example: local guide, artisan, business, social project...",
+        placeholderContact: "WhatsApp, Instagram, website or other contact (optional)",
+        placeholderReason: "Why should this person or initiative discover the project?",
+
+        submitBtn: "Register recommendation (+10 UVT)",
+
+        helpTitle: "What kind of recommendation helps?",
+        help1: "People active in tourism, culture, local commerce, agriculture, education, social projects, communication or any initiative that strengthens the territory.",
+        help2: "Good recommendations help expand the ecosystem network and bring the project closer to people who can contribute in practical ways.",
+
+        backBtn: "← Back to actions",
+        dashboardBtn: "View dashboard",
+        walletBtn: "View my wallet",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Compartilhar Iniciativa | UVT Localyze",
+        metaDescription: "Indique pessoas, negócios ou projetos que podem conhecer e fortalecer o UVT Localyze e o Ecossistema Alta Piatã.",
+
+        badge: "Expansão",
+        title: "Indique alguém para conhecer o projeto",
+        intro1: "Ajude o UVT Localyze e o Ecossistema Alta Piatã a chegarem a mais pessoas, negócios, iniciativas e lideranças comunitárias.",
+        introNote: "Ao registrar uma indicação válida, você gera 10 UVT.",
+
+        labelName: "Nome da pessoa, negócio ou projeto",
+        labelContact: "Contato ou rede social",
+        labelReason: "Motivo da indicação",
+
+        placeholderName: "Ex: guia local, artesão, comércio, projeto social...",
+        placeholderContact: "WhatsApp, Instagram, site ou outro contato (opcional)",
+        placeholderReason: "Por que essa pessoa ou iniciativa deveria conhecer o projeto?",
+
+        submitBtn: "Registrar indicação (+10 UVT)",
+
+        helpTitle: "Que tipo de indicação ajuda?",
+        help1: "Pessoas que atuam no turismo, cultura, comércio local, agricultura, educação, projetos sociais, comunicação ou qualquer iniciativa que fortaleça o território.",
+        help2: "Boas indicações ajudam a ampliar a rede do ecossistema e aproximam o projeto de quem pode contribuir de forma prática.",
+
+        backBtn: "← Voltar às atividades",
+        dashboardBtn: "Ver painel",
+        walletBtn: "Ver minha carteira",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Compartir Iniciativa | UVT Localyze",
+        metaDescription: "Indica personas, negocios o proyectos que puedan conocer y fortalecer UVT Localyze y el Ecosistema Alta Piatã.",
+
+        badge: "Expansión",
+        title: "Indica a alguien para conocer el proyecto",
+        intro1: "Ayuda a UVT Localyze y al Ecosistema Alta Piatã a llegar a más personas, negocios, iniciativas y liderazgos comunitarios.",
+        introNote: "Al registrar una indicación válida, generas 10 UVT.",
+
+        labelName: "Nombre de la persona, negocio o proyecto",
+        labelContact: "Contacto o red social",
+        labelReason: "Motivo de la indicación",
+
+        placeholderName: "Ej: guía local, artesano, comercio, proyecto social...",
+        placeholderContact: "WhatsApp, Instagram, sitio web u otro contacto (opcional)",
+        placeholderReason: "¿Por qué esta persona o iniciativa debería conocer el proyecto?",
+
+        submitBtn: "Registrar indicación (+10 UVT)",
+
+        helpTitle: "¿Qué tipo de indicación ayuda?",
+        help1: "Personas que actúan en turismo, cultura, comercio local, agricultura, educación, proyectos sociales, comunicación o cualquier iniciativa que fortalezca el territorio.",
+        help2: "Buenas indicaciones ayudan a ampliar la red del ecosistema y acercan el proyecto a quienes pueden contribuir de forma práctica.",
+
+        backBtn: "← Volver a actividades",
+        dashboardBtn: "Ver panel",
+        walletBtn: "Ver mi cartera",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      document.getElementById("indicadoNome").placeholder = t.placeholderName;
+      document.getElementById("indicadoContato").placeholder = t.placeholderContact;
+      document.getElementById("indicadoMotivo").placeholder = t.placeholderReason;
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

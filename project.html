@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Community Living Map | UVT Localyze</title>
+
+  <meta name="description" content="Discover the Community Living Map, UVT Localyze's first collective project to transform participation into territorial intelligence.">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .project-summary-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .project-summary-card:hover {
+      border-color: rgba(34,197,94,0.45);
+      transform: translateY(-2px);
+    }
+
+    .project-toggle {
+      margin-top: 14px;
+      color: #22C55E;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .project-hidden-content {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .project-hidden-content.active {
+      display: block;
+      animation: fadeProject 0.35s ease;
+    }
+
+    @keyframes fadeProject {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <!-- HERO -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <!-- EXPANDABLE PROJECT CARD -->
+      <section class="card project-summary-card" onclick="toggleProjetoDetalhes()">
+        <h3 id="projectCardTitle"></h3>
+
+        <p class="sub" id="projectCardText"></p>
+
+        <div class="project-toggle" id="projectToggleText"></div>
+
+        <div class="project-hidden-content" id="projectHiddenContent">
+          <p class="sub" id="hidden1"></p>
+          <p class="sub" id="hidden2"></p>
+          <p class="sub" id="hidden3"></p>
+        </div>
+      </section>
+
+
+      <!-- PROPOSAL -->
+      <section class="card">
+        <h3 id="proposalTitle"></h3>
+
+        <div class="steps">
+          <div class="step">
+            <strong id="proposal1Title"></strong>
+            <p id="proposal1Text"></p>
+          </div>
+
+          <div class="step">
+            <strong id="proposal2Title"></strong>
+            <p id="proposal2Text"></p>
+          </div>
+
+          <div class="step">
+            <strong id="proposal3Title"></strong>
+            <p id="proposal3Text"></p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- BENEFITS -->
+      <section class="card impact">
+        <h3 id="bringsTitle"></h3>
+
+        <p class="sub" id="brings1"></p>
+        <p class="sub" id="brings2"></p>
+      </section>
+
+
+      <!-- ECOSYSTEM VALUE -->
+      <section class="card">
+        <h3 id="addsTitle"></h3>
+
+        <p class="sub" id="adds1"></p>
+        <p class="sub" id="adds2"></p>
+      </section>
+
+
+      <!-- BLOCKCHAIN / HACKATHON -->
+      <section class="card dashboard-reading">
+        <h3 id="blockchainTitle"></h3>
+
+        <p class="sub" id="blockchain1"></p>
+        <p class="sub" id="blockchain2"></p>
+        <p class="sub" id="blockchain3"></p>
+        <p class="prototype-note" id="blockchain4"></p>
+      </section>
+
+
+      <!-- PROJECT JOURNEY -->
+      <section class="card project-journey">
+        <h3 id="journeyTitle"></h3>
+
+        <p class="sub" id="journeyIntro"></p>
+
+        <div class="journey-progress">
+          <div class="journey-progress-fill" id="journeyProgressFill"></div>
+        </div>
+
+        <div class="journey-steps">
+
+          <div class="journey-step" data-min="0" data-max="300">
+            <strong id="phase1Title"></strong>
+            <span>0 → 300 UVT</span>
+            <p id="phase1Text"></p>
+          </div>
+
+          <div class="journey-step" data-min="300" data-max="700">
+            <strong id="phase2Title"></strong>
+            <span>300 → 700 UVT</span>
+            <p id="phase2Text"></p>
+          </div>
+
+          <div class="journey-step" data-min="700" data-max="1500">
+            <strong id="phase3Title"></strong>
+            <span>700 → 1,500 UVT</span>
+            <p id="phase3Text"></p>
+          </div>
+
+          <div class="journey-step" data-min="1500" data-max="3000">
+            <strong id="phase4Title"></strong>
+            <span>1,500 → 3,000 UVT</span>
+            <p id="phase4Text"></p>
+          </div>
+
+          <div class="journey-step" data-min="3000" data-max="5000">
+            <strong id="phase5Title"></strong>
+            <span>3,000 → 5,000 UVT</span>
+            <p id="phase5Text"></p>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- PARTICIPATION CTA -->
+      <section class="card impact">
+        <h3 id="participateTitle"></h3>
+
+        <p class="sub" id="participate1"></p>
+        <p class="sub" id="participate2"></p>
+
+        <a href="action.html" class="btn primary" id="participateBtn"></a>
+      </section>
+
+
+      <!-- NAVIGATION -->
+      <section class="card nav-actions">
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+        <a href="impact.html" class="btn secondary" id="impactBtn"></a>
+        <a href="index.html" class="btn secondary" id="backBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- FLOATING DASHBOARD -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <!-- =====================================================
+       MULTILANGUAGE + TOGGLE SCRIPT
+  ====================================================== -->
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Community Living Map | UVT Localyze",
+        metaDescription: "Discover the Community Living Map, UVT Localyze's first collective project to transform participation into territorial intelligence.",
+
+        badge: "Project in progress",
+        title: "Community Living Map",
+        intro1: "UVT Localyze's first collective project is designed to listen, organize and transform community participation into real territorial intelligence.",
+        introNote: "This phase defines the starting point: before executing any action, we need to understand what the community feels, needs and wants to build.",
+
+        projectCardTitle: "The project we are building",
+        projectCardText: "A territorial listening project to understand what the community needs, values and wants to build.",
+        toggleOpen: "Tap to read more ↓",
+        toggleClose: "Tap to collapse ↑",
+
+        hidden1: "The Community Living Map is UVT Localyze's first collective construction. It gathers real perceptions from the population about problems, priorities, opportunities and important points in the territory.",
+        hidden2: "The goal is to transform small participations into an organized community reading. Each answer, suggestion, recommendation or report helps reveal the greatest needs and the paths with the highest potential impact.",
+        hidden3: "This project adds value because it creates an initial base for smarter decisions: instead of starting from guesses, the territory begins to be read from the participation of its own people.",
+
+        proposalTitle: "What does it propose?",
+        proposal1Title: "Listen to the community",
+        proposal1Text: "Collect real perceptions about local problems, priorities, needs and opportunities.",
+        proposal2Title: "Organize territorial signals",
+        proposal2Text: "Transform answers, suggestions and records into understandable community data.",
+        proposal3Title: "Reveal paths for action",
+        proposal3Text: "Use collective participation to indicate which projects make more sense for the next stage.",
+
+        bringsTitle: "What does it bring?",
+        brings1: "The Living Map brings clarity. It helps the community see, in an organized way, which themes appear with more strength and which demands need more attention.",
+        brings2: "It also creates a bridge between participation and action: the more people contribute, the stronger the reading becomes about what should be built.",
+
+        addsTitle: "What does it add to the ecosystem?",
+        adds1: "For the Alta Piatã Ecosystem, this project creates an initial base of territorial intelligence. It helps guide future actions in infrastructure, tourism, culture, education, environment, local businesses and community development.",
+        adds2: "For the population, it opens a simple participation channel. It does not require a position, a meeting or bureaucracy: people only need to contribute what they perceive in daily life.",
+
+        blockchainTitle: "Blockchain layer for evaluators",
+        blockchain1: "UVT Localyze works without blockchain in this first stage. The current goal is to validate real participation, collect territorial signals and prove that the community can generate useful data.",
+        blockchain2: "As the system grows, blockchain can be added as a trust layer: instead of recording every user action on-chain, the platform can periodically summarize participation data and register cryptographic hashes of those summaries.",
+        blockchain3: "This creates verifiable integrity for community-generated data while keeping the product fast, low-cost and usable for real people.",
+        blockchain4: "The goal is not tokenization. The goal is auditability, transparency and trust for institutions, funders and future public-interest projects.",
+
+        journeyTitle: "How does the project evolve?",
+        journeyIntro: "Each participation generates UVT and helps the project move from one phase to another.",
+
+        phase1Title: "Discovery",
+        phase1Text: "We are understanding which problem really matters.",
+        phase2Title: "Direction",
+        phase2Text: "The community begins to define which solution path to follow.",
+        phase3Title: "Structuring",
+        phase3Text: "The project gains shape and begins to be designed.",
+        phase4Title: "Planning",
+        phase4Text: "We define how to execute it in practice.",
+        phase5Title: "Mobilization",
+        phase5Text: "It is time to make it happen.",
+
+        participateTitle: "How to participate?",
+        participate1: "You can answer surveys, suggest improvements, recommend places, report problems or register community actions.",
+        participate2: "Each participation helps build the living map and strengthens the next collective decision.",
+        participateBtn: "Participate now",
+
+        dashboardBtn: "View live dashboard",
+        impactBtn: "View collective impact",
+        backBtn: "← Back to start",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Mapa Vivo da Comunidade | UVT Localyze",
+        metaDescription: "Conheça o Mapa Vivo da Comunidade, primeiro projeto coletivo do UVT Localyze para transformar participação em leitura territorial.",
+
+        badge: "Projeto em construção",
+        title: "Mapa Vivo da Comunidade",
+        intro1: "O primeiro projeto coletivo do UVT Localyze nasce para ouvir, organizar e transformar a participação da comunidade em leitura real do território.",
+        introNote: "Esta fase define o ponto de partida: antes de executar qualquer ação, precisamos entender o que a comunidade sente, precisa e quer construir.",
+
+        projectCardTitle: "O projeto que estamos construindo",
+        projectCardText: "Um projeto de escuta territorial para entender o que a comunidade precisa, valoriza e quer construir.",
+        toggleOpen: "Toque para ler mais ↓",
+        toggleClose: "Toque para recolher ↑",
+
+        hidden1: "O Mapa Vivo da Comunidade é a primeira construção coletiva do UVT Localyze. Ele nasce para reunir percepções reais da população sobre problemas, prioridades, oportunidades e pontos importantes do território.",
+        hidden2: "A proposta é transformar pequenas participações em uma leitura organizada da comunidade. Cada resposta, sugestão, indicação ou registro ajuda a revelar onde estão as maiores necessidades e quais caminhos podem gerar mais impacto.",
+        hidden3: "Esse projeto agrega valor porque cria uma base inicial para decisões mais inteligentes: em vez de partir de achismos, o território começa a ser lido a partir da participação das próprias pessoas.",
+
+        proposalTitle: "O que ele propõe?",
+        proposal1Title: "Escutar a comunidade",
+        proposal1Text: "Coletar percepções reais sobre problemas, prioridades, necessidades e oportunidades locais.",
+        proposal2Title: "Organizar sinais do território",
+        proposal2Text: "Transformar respostas, sugestões e registros em dados comunitários compreensíveis.",
+        proposal3Title: "Revelar caminhos de ação",
+        proposal3Text: "Usar a participação coletiva para indicar quais projetos fazem mais sentido para a próxima etapa.",
+
+        bringsTitle: "O que ele traz?",
+        brings1: "O Mapa Vivo traz clareza. Ele ajuda a comunidade a enxergar, de forma organizada, quais temas aparecem com mais força e quais demandas precisam ser observadas com mais atenção.",
+        brings2: "Também cria uma ponte entre participação e ação: quanto mais pessoas contribuem, mais forte fica a leitura sobre o que deve ser construído.",
+
+        addsTitle: "O que ele agrega?",
+        adds1: "Para o Ecossistema Alta Piatã, esse projeto cria uma base inicial de inteligência territorial. Ele ajuda a orientar futuras ações em áreas como infraestrutura, turismo, cultura, educação, meio ambiente, negócios locais e desenvolvimento comunitário.",
+        adds2: "Para a população, ele abre um canal simples de participação. Não exige cargo, reunião ou burocracia: basta contribuir com o que se percebe no dia a dia.",
+
+        blockchainTitle: "Camada blockchain para avaliadores",
+        blockchain1: "O UVT Localyze funciona sem blockchain nesta primeira fase. O objetivo atual é validar participação real, coletar sinais territoriais e provar que a comunidade consegue gerar dados úteis.",
+        blockchain2: "À medida que o sistema cresce, a blockchain pode entrar como camada de confiança: em vez de registrar cada ação individual, a plataforma pode consolidar periodicamente os dados de participação e registrar hashes criptográficos desses resumos.",
+        blockchain3: "Isso cria integridade verificável para os dados gerados pela comunidade, mantendo o produto rápido, barato e usável por pessoas reais.",
+        blockchain4: "O objetivo não é tokenização. O objetivo é auditabilidade, transparência e confiança para instituições, financiadores e futuros projetos de interesse público.",
+
+        journeyTitle: "Como o projeto evolui?",
+        journeyIntro: "Cada participação gera UVT e ajuda o projeto a avançar de uma fase para outra.",
+
+        phase1Title: "Descoberta",
+        phase1Text: "Estamos entendendo qual problema realmente importa.",
+        phase2Title: "Direcionamento",
+        phase2Text: "A comunidade começa a definir qual solução seguir.",
+        phase3Title: "Estruturação",
+        phase3Text: "O projeto ganha forma e começa a ser desenhado.",
+        phase4Title: "Planejamento",
+        phase4Text: "Definimos como executar na prática.",
+        phase5Title: "Mobilização",
+        phase5Text: "Chegou a hora de fazer acontecer.",
+
+        participateTitle: "Como participar?",
+        participate1: "Você pode responder enquetes, sugerir melhorias, indicar locais, reportar problemas ou registrar ações comunitárias.",
+        participate2: "Cada participação ajuda a construir o mapa vivo e fortalece a próxima decisão coletiva.",
+        participateBtn: "Participar agora",
+
+        dashboardBtn: "Ver painel vivo",
+        impactBtn: "Ver impacto coletivo",
+        backBtn: "← Voltar ao início",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Mapa Vivo de la Comunidad | UVT Localyze",
+        metaDescription: "Conoce el Mapa Vivo de la Comunidad, el primer proyecto colectivo de UVT Localyze para transformar participación en lectura territorial.",
+
+        badge: "Proyecto en construcción",
+        title: "Mapa Vivo de la Comunidad",
+        intro1: "El primer proyecto colectivo de UVT Localyze nace para escuchar, organizar y transformar la participación comunitaria en una lectura real del territorio.",
+        introNote: "Esta fase define el punto de partida: antes de ejecutar cualquier acción, necesitamos entender lo que la comunidad siente, necesita y quiere construir.",
+
+        projectCardTitle: "El proyecto que estamos construyendo",
+        projectCardText: "Un proyecto de escucha territorial para entender lo que la comunidad necesita, valora y quiere construir.",
+        toggleOpen: "Toca para leer más ↓",
+        toggleClose: "Toca para cerrar ↑",
+
+        hidden1: "El Mapa Vivo de la Comunidad es la primera construcción colectiva de UVT Localyze. Nace para reunir percepciones reales de la población sobre problemas, prioridades, oportunidades y puntos importantes del territorio.",
+        hidden2: "La propuesta es transformar pequeñas participaciones en una lectura organizada de la comunidad. Cada respuesta, sugerencia, indicación o registro ayuda a revelar las mayores necesidades y los caminos con mayor impacto potencial.",
+        hidden3: "Este proyecto agrega valor porque crea una base inicial para decisiones más inteligentes: en vez de partir de suposiciones, el territorio empieza a leerse desde la participación de sus propias personas.",
+
+        proposalTitle: "¿Qué propone?",
+        proposal1Title: "Escuchar a la comunidad",
+        proposal1Text: "Recolectar percepciones reales sobre problemas, prioridades, necesidades y oportunidades locales.",
+        proposal2Title: "Organizar señales del territorio",
+        proposal2Text: "Transformar respuestas, sugerencias y registros en datos comunitarios comprensibles.",
+        proposal3Title: "Revelar caminos de acción",
+        proposal3Text: "Usar la participación colectiva para indicar qué proyectos tienen más sentido para la próxima etapa.",
+
+        bringsTitle: "¿Qué aporta?",
+        brings1: "El Mapa Vivo aporta claridad. Ayuda a la comunidad a ver, de forma organizada, qué temas aparecen con más fuerza y qué demandas necesitan más atención.",
+        brings2: "También crea un puente entre participación y acción: cuantas más personas contribuyen, más fuerte se vuelve la lectura sobre lo que debe construirse.",
+
+        addsTitle: "¿Qué agrega al ecosistema?",
+        adds1: "Para el Ecosistema Alta Piatã, este proyecto crea una base inicial de inteligencia territorial. Ayuda a orientar futuras acciones en infraestructura, turismo, cultura, educación, medio ambiente, negocios locales y desarrollo comunitario.",
+        adds2: "Para la población, abre un canal simple de participación. No exige cargo, reunión ni burocracia: basta contribuir con lo que se percibe en el día a día.",
+
+        blockchainTitle: "Capa blockchain para evaluadores",
+        blockchain1: "UVT Localyze funciona sin blockchain en esta primera fase. El objetivo actual es validar participación real, recopilar señales territoriales y demostrar que la comunidad puede generar datos útiles.",
+        blockchain2: "A medida que el sistema crece, blockchain puede entrar como capa de confianza: en lugar de registrar cada acción individual, la plataforma puede consolidar periódicamente los datos de participación y registrar hashes criptográficos de esos resúmenes.",
+        blockchain3: "Esto crea integridad verificable para los datos generados por la comunidad, manteniendo el producto rápido, económico y usable por personas reales.",
+        blockchain4: "El objetivo no es la tokenización. El objetivo es auditabilidad, transparencia y confianza para instituciones, financiadores y futuros proyectos de interés público.",
+
+        journeyTitle: "¿Cómo evoluciona el proyecto?",
+        journeyIntro: "Cada participación genera UVT y ayuda al proyecto a avanzar de una fase a otra.",
+
+        phase1Title: "Descubrimiento",
+        phase1Text: "Estamos entendiendo qué problema realmente importa.",
+        phase2Title: "Dirección",
+        phase2Text: "La comunidad comienza a definir qué camino de solución seguir.",
+        phase3Title: "Estructuración",
+        phase3Text: "El proyecto toma forma y empieza a diseñarse.",
+        phase4Title: "Planificación",
+        phase4Text: "Definimos cómo ejecutarlo en la práctica.",
+        phase5Title: "Movilización",
+        phase5Text: "Llegó la hora de hacerlo realidad.",
+
+        participateTitle: "¿Cómo participar?",
+        participate1: "Puedes responder encuestas, sugerir mejoras, indicar lugares, reportar problemas o registrar acciones comunitarias.",
+        participate2: "Cada participación ayuda a construir el mapa vivo y fortalece la próxima decisión colectiva.",
+        participateBtn: "Participar ahora",
+
+        dashboardBtn: "Ver panel vivo",
+        impactBtn: "Ver impacto colectivo",
+        backBtn: "← Volver al inicio",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      updateProjectToggleText();
+    }
+
+    function updateProjectToggleText() {
+      const content = document.getElementById("projectHiddenContent");
+      const text = document.getElementById("projectToggleText");
+      const lang = localStorage.getItem("uvt_lang") || "en";
+      const t = translations[lang] || translations.en;
+
+      if (!content || !text) return;
+
+      text.innerText = content.classList.contains("active")
+        ? t.toggleClose
+        : t.toggleOpen;
+    }
+
+    function toggleProjetoDetalhes() {
+      const content = document.getElementById("projectHiddenContent");
+      if (!content) return;
+
+      content.classList.toggle("active");
+      updateProjectToggleText();
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Community Action | UVT Localyze</title>
+
+  <meta name="description" content="Register your participation in community actions and contribute real territorial data.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img src="assets/Logotipo UVT Localyze.png" class="logo" alt="UVT Localyze Logo">
+
+      <span class="badge" id="badge">Community action</span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. CONTENT
+    ====================================================== -->
+    <main>
+
+      <!-- HERO -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <!-- EXPLANATION -->
+      <section class="card">
+        <h3 id="whatTitle"></h3>
+
+        <p class="sub" id="whatIntro"></p>
+
+        <ul class="sub">
+          <li id="item1"></li>
+          <li id="item2"></li>
+          <li id="item3"></li>
+          <li id="item4"></li>
+          <li id="item5"></li>
+        </ul>
+      </section>
+
+
+      <!-- FORM -->
+      <section class="card">
+        <h3 id="formTitle"></h3>
+
+        <form id="communityForm" class="form">
+
+          <label>
+            <span id="labelName"></span>
+            <input type="text" id="actionName" required>
+          </label>
+
+          <label>
+            <span id="labelDesc"></span>
+            <textarea id="actionDesc" required></textarea>
+          </label>
+
+          <label>
+            <span id="labelLocation"></span>
+            <input type="text" id="actionLocation" required>
+          </label>
+
+          <label>
+            <span id="labelDate"></span>
+            <input type="date" id="actionDate" required>
+          </label>
+
+          <label>
+            <span id="labelPhoto"></span>
+            <input type="text" id="actionPhoto">
+          </label>
+
+          <button type="submit" class="btn primary" id="submitBtn"></button>
+
+        </form>
+      </section>
+
+
+      <!-- UVT EXPLANATION -->
+      <section class="card impact">
+        <h3 id="valueTitle"></h3>
+
+        <p class="sub" id="value1"></p>
+        <p class="sub" id="value2"></p>
+        <p class="sub" id="value3"></p>
+      </section>
+
+
+      <!-- IMPACT -->
+      <section class="card impact">
+        <h3 id="impactTitle"></h3>
+
+        <p class="sub" id="impactIntro"></p>
+
+        <ul class="sub">
+          <li id="impact1"></li>
+          <li id="impact2"></li>
+          <li id="impact3"></li>
+          <li id="impact4"></li>
+        </ul>
+      </section>
+
+
+      <!-- NAVIGATION -->
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- DASHBOARD -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open live dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="dashText"></small>
+  </a>
+
+
+  <!-- =====================================================
+       MULTILANGUAGE + FORM SCRIPT
+  ====================================================== -->
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Community Action | UVT Localyze",
+        metaDescription: "Register your participation in community actions and contribute real territorial data.",
+
+        badge: "Community action",
+        title: "Register real participation",
+        intro1: "This is one of the most important actions in the system. Here you register real participation in the territory.",
+        introNote: "Daily limits apply. Records may be reviewed to preserve data integrity.",
+
+        whatTitle: "What counts as a community action?",
+        whatIntro: "Any activity where you directly participated in helping the community:",
+        item1: "Collective efforts",
+        item2: "Cultural events",
+        item3: "Environmental actions",
+        item4: "Support for local projects",
+        item5: "Community organization",
+
+        formTitle: "Register action",
+        labelName: "Action name",
+        labelDesc: "Description",
+        labelLocation: "Location",
+        labelDate: "Date",
+        labelPhoto: "Optional photo or reference",
+        placeholderName: "Example: Community clean-up",
+        placeholderDesc: "Explain what happened",
+        placeholderLocation: "Example: Downtown / Rural area",
+        placeholderPhoto: "File name or link",
+        submitBtn: "Register participation (+25 UVT)",
+
+        valueTitle: "Why is this action worth more?",
+        value1: "Unlike quick answers, this records real participation in the territory.",
+        value2: "This type of data is rarer, harder to generate and more valuable for territorial analysis.",
+        value3: "For the system, it indicates practical engagement — not just opinion.",
+
+        impactTitle: "What happens to this record?",
+        impactIntro: "It enters the community dataset and helps identify:",
+        impact1: "Where there is more mobilization",
+        impact2: "Which areas have more initiatives",
+        impact3: "Where natural leadership may exist",
+        impact4: "Which types of action happen more often",
+
+        backBtn: "← Back to actions",
+        dashboardBtn: "View dashboard",
+
+        dashLabel: "Live panel",
+        dashText: "View community data →",
+
+        successMessage: "Community action registered successfully! +25 UVT"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Ação Comunitária | UVT Localyze",
+        metaDescription: "Registre sua participação em ações comunitárias e contribua com dados reais sobre o território.",
+
+        badge: "Ação comunitária",
+        title: "Registrar participação real",
+        intro1: "Esta é uma das ações mais importantes do sistema. Aqui você registra participação real no território.",
+        introNote: "Limite diário aplicado. Registros podem ser revisados para manter a integridade dos dados.",
+
+        whatTitle: "O que conta como ação comunitária?",
+        whatIntro: "Qualquer atividade onde você participou diretamente ajudando a comunidade:",
+        item1: "Mutirões",
+        item2: "Eventos culturais",
+        item3: "Ações ambientais",
+        item4: "Apoio a projetos locais",
+        item5: "Organização comunitária",
+
+        formTitle: "Registrar ação",
+        labelName: "Nome da ação",
+        labelDesc: "Descrição",
+        labelLocation: "Local",
+        labelDate: "Data",
+        labelPhoto: "(Opcional) Foto ou referência",
+        placeholderName: "Ex: Mutirão de limpeza",
+        placeholderDesc: "Explique o que aconteceu",
+        placeholderLocation: "Ex: Centro / Zona rural",
+        placeholderPhoto: "Nome do arquivo ou link",
+        submitBtn: "Registrar participação (+25 UVT)",
+
+        valueTitle: "Por que essa ação vale mais?",
+        value1: "Diferente de respostas rápidas, aqui você registra participação real no território.",
+        value2: "Esse tipo de dado é mais raro, mais difícil de gerar e mais valioso para leitura territorial.",
+        value3: "Para o sistema, isso indica engajamento prático — não apenas opinião.",
+
+        impactTitle: "O que acontece com esse registro?",
+        impactIntro: "Ele entra no conjunto de dados da comunidade e ajuda a identificar:",
+        impact1: "Onde há mais mobilização",
+        impact2: "Quais áreas têm mais iniciativas",
+        impact3: "Onde existem lideranças naturais",
+        impact4: "Que tipo de ação acontece com mais frequência",
+
+        backBtn: "← Voltar às ações",
+        dashboardBtn: "Ver painel",
+
+        dashLabel: "Painel vivo",
+        dashText: "Ver dados da comunidade →",
+
+        successMessage: "Ação registrada com sucesso! +25 UVT"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Acción Comunitaria | UVT Localyze",
+        metaDescription: "Registra tu participación en acciones comunitarias y contribuye con datos reales del territorio.",
+
+        badge: "Acción comunitaria",
+        title: "Registrar participación real",
+        intro1: "Esta es una de las acciones más importantes del sistema. Aquí registras participación real en el territorio.",
+        introNote: "Se aplican límites diarios. Los registros pueden revisarse para mantener la integridad de los datos.",
+
+        whatTitle: "¿Qué cuenta como acción comunitaria?",
+        whatIntro: "Cualquier actividad donde participaste directamente ayudando a la comunidad:",
+        item1: "Esfuerzos colectivos",
+        item2: "Eventos culturales",
+        item3: "Acciones ambientales",
+        item4: "Apoyo a proyectos locales",
+        item5: "Organización comunitaria",
+
+        formTitle: "Registrar acción",
+        labelName: "Nombre de la acción",
+        labelDesc: "Descripción",
+        labelLocation: "Ubicación",
+        labelDate: "Fecha",
+        labelPhoto: "(Opcional) Foto o referencia",
+        placeholderName: "Ej: Limpieza comunitaria",
+        placeholderDesc: "Explica qué ocurrió",
+        placeholderLocation: "Ej: Centro / Zona rural",
+        placeholderPhoto: "Nombre del archivo o enlace",
+        submitBtn: "Registrar participación (+25 UVT)",
+
+        valueTitle: "¿Por qué esta acción vale más?",
+        value1: "A diferencia de respuestas rápidas, aquí registras participación real en el territorio.",
+        value2: "Este tipo de dato es más raro, más difícil de generar y más valioso para la lectura territorial.",
+        value3: "Para el sistema, indica compromiso práctico — no solo opinión.",
+
+        impactTitle: "¿Qué ocurre con este registro?",
+        impactIntro: "Entra en el conjunto de datos de la comunidad y ayuda a identificar:",
+        impact1: "Dónde hay más movilización",
+        impact2: "Qué áreas tienen más iniciativas",
+        impact3: "Dónde pueden existir liderazgos naturales",
+        impact4: "Qué tipo de acción ocurre con más frecuencia",
+
+        backBtn: "← Volver a acciones",
+        dashboardBtn: "Ver panel",
+
+        dashLabel: "Panel vivo",
+        dashText: "Ver datos de la comunidad →",
+
+        successMessage: "¡Acción comunitaria registrada con éxito! +25 UVT"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      document.getElementById("actionName").placeholder = t.placeholderName;
+      document.getElementById("actionDesc").placeholder = t.placeholderDesc;
+      document.getElementById("actionLocation").placeholder = t.placeholderLocation;
+      document.getElementById("actionPhoto").placeholder = t.placeholderPhoto;
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+
+    document.getElementById("communityForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const selectedLang = localStorage.getItem("uvt_lang") || "en";
+      const currentText = translations[selectedLang] || translations.en;
+
+      const action = {
+        name: document.getElementById("actionName").value,
+        desc: document.getElementById("actionDesc").value,
+        location: document.getElementById("actionLocation").value,
+        date: document.getElementById("actionDate").value,
+        photo: document.getElementById("actionPhoto").value,
+        type: "community_action",
+        uvt: 25,
+        createdAt: new Date().toISOString()
+      };
+
+      let actions = JSON.parse(localStorage.getItem("communityActions") || "[]");
+      actions.push(action);
+      localStorage.setItem("communityActions", JSON.stringify(actions));
+
+      let uvt = parseInt(localStorage.getItem("uvt") || "0", 10);
+      uvt += 25;
+      localStorage.setItem("uvt", uvt);
+
+      alert(currentText.successMessage);
+
+      window.location.href = "dashboard.html";
+    });
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

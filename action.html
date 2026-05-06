@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Actions | UVT Localyze</title>
+
+  <meta name="description" content="Choose actions to participate, generate UVT and contribute structured territorial data.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         TOPO
+    ====================================================== -->
+    <header class="topbar">
+      <img src="assets/Logotipo UVT Localyze.png" class="logo" alt="UVT Localyze Logo">
+
+      <span class="badge" id="badge">Actions</span>
+
+      <div class="lang-switch">
+        <button onclick="setLang('pt')">🇧🇷</button>
+        <button onclick="setLang('en')">🇺🇸</button>
+        <button onclick="setLang('es')">🇪🇸</button>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+      <!-- PARTICIPAÇÃO -->
+      <section class="card">
+        <h3 id="basicTitle"></h3>
+
+        <div class="action-card">
+          <p id="pollText"></p>
+          <a href="poll.html" class="btn primary" id="pollBtn"></a>
+        </div>
+
+        <div class="action-card">
+          <p id="priorityText"></p>
+          <a href="priority.html" class="btn primary" id="priorityBtn"></a>
+        </div>
+      </section>
+
+      <!-- CONTRIBUIÇÃO -->
+      <section class="card">
+        <h3 id="territoryTitle"></h3>
+
+        <div class="action-card">
+          <p id="suggestionText"></p>
+          <a href="suggestion.html" class="btn primary" id="suggestionBtn"></a>
+        </div>
+
+        <div class="action-card">
+          <p id="reportText"></p>
+          <a href="report.html" class="btn primary" id="reportBtn"></a>
+        </div>
+
+        <div class="action-card">
+          <p id="placeText"></p>
+          <a href="place.html" class="btn primary" id="placeBtn"></a>
+        </div>
+      </section>
+
+      <!-- COMUNIDADE -->
+      <section class="card">
+        <h3 id="communityTitle"></h3>
+
+        <div class="action-card">
+          <p id="shareText"></p>
+          <a href="share.html" class="btn primary" id="shareBtn"></a>
+        </div>
+
+        <div class="action-card">
+          <p id="communityActionText"></p>
+          <a href="community-action.html" class="btn primary" id="communityActionBtn"></a>
+        </div>
+      </section>
+
+      <!-- VALORES -->
+      <section class="card impact">
+        <h3 id="valuesTitle"></h3>
+
+        <p class="sub" id="values1"></p>
+        <p class="sub" id="values2"></p>
+      </section>
+
+      <!-- NAV -->
+      <section class="card">
+        <a href="index.html" class="btn secondary" id="backBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- FLOAT DASH -->
+  <a href="dashboard.html" class="dashboard-floating-card">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+  <!-- =====================================================
+       MULTI LANGUAGE
+  ====================================================== -->
+  <script>
+    const translations = {
+
+      en: {
+        htmlLang: "en",
+        pageTitle: "Actions | UVT Localyze",
+        metaDescription: "Choose actions to participate and generate territorial data.",
+
+        badge: "Actions",
+        title: "Choose an action",
+        intro1: "Each participation generates UVT and builds territorial insights.",
+        introNote: "Limits prevent abuse and artificial accumulation.",
+
+        basicTitle: "Basic participation",
+        pollText: "Answer a community question.",
+        pollBtn: "Answer (+10 UVT)",
+        priorityText: "Vote on a priority.",
+        priorityBtn: "Vote (+8 UVT)",
+
+        territoryTitle: "Territorial contribution",
+        suggestionText: "Send improvement suggestions.",
+        suggestionBtn: "Send (+10 UVT)",
+        reportText: "Report a local issue.",
+        reportBtn: "Report (+15 UVT)",
+        placeText: "Recommend a place.",
+        placeBtn: "Recommend (+15 UVT)",
+
+        communityTitle: "Community engagement",
+        shareText: "Recommend someone.",
+        shareBtn: "Recommend (+10 UVT)",
+        communityActionText: "Register real participation.",
+        communityActionBtn: "Register (+25 UVT)",
+
+        valuesTitle: "How it works",
+        values1: "Different actions generate different values.",
+        values2: "The collective insight matters more than the score.",
+
+        backBtn: "← Back",
+        walletBtn: "My wallet",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Ações | UVT",
+        metaDescription: "Escolha ações e gere dados.",
+
+        badge: "Atividades",
+        title: "Escolha uma ação",
+        intro1: "Cada participação gera UVT.",
+        introNote: "Limites evitam abuso.",
+
+        basicTitle: "Participação",
+        pollText: "Responda uma pergunta.",
+        pollBtn: "Responder (+10)",
+        priorityText: "Vote em prioridade.",
+        priorityBtn: "Votar (+8)",
+
+        territoryTitle: "Contribuição",
+        suggestionText: "Sugira melhorias.",
+        suggestionBtn: "Enviar (+10)",
+        reportText: "Reporte problema.",
+        reportBtn: "Registrar (+15)",
+        placeText: "Indique local.",
+        placeBtn: "Indicar (+15)",
+
+        communityTitle: "Comunidade",
+        shareText: "Indique alguém.",
+        shareBtn: "Indicar (+10)",
+        communityActionText: "Ação real.",
+        communityActionBtn: "Registrar (+25)",
+
+        valuesTitle: "Funcionamento",
+        values1: "Cada ação tem valor.",
+        values2: "O coletivo importa.",
+
+        backBtn: "← Voltar",
+        walletBtn: "Carteira",
+
+        dashLabel: "Painel",
+        teaserInsight: "Ver →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Acciones | UVT",
+        metaDescription: "Participa y genera datos.",
+
+        badge: "Acciones",
+        title: "Elige una acción",
+        intro1: "Cada acción genera UVT.",
+        introNote: "Sistema con límites.",
+
+        basicTitle: "Participación",
+        pollText: "Responder encuesta.",
+        pollBtn: "Responder",
+        priorityText: "Votar prioridad.",
+        priorityBtn: "Votar",
+
+        territoryTitle: "Contribución",
+        suggestionText: "Enviar sugerencia.",
+        suggestionBtn: "Enviar",
+        reportText: "Reportar problema.",
+        reportBtn: "Reportar",
+        placeText: "Indicar lugar.",
+        placeBtn: "Indicar",
+
+        communityTitle: "Comunidad",
+        shareText: "Indicar persona.",
+        shareBtn: "Indicar",
+        communityActionText: "Acción real.",
+        communityActionBtn: "Registrar",
+
+        valuesTitle: "Funcionamiento",
+        values1: "Cada acción tiene valor.",
+        values2: "Importa el colectivo.",
+
+        backBtn: "← Volver",
+        walletBtn: "Cartera",
+
+        dashLabel: "Panel",
+        teaserInsight: "Ver →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const d = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = d.htmlLang;
+      document.title = d.pageTitle;
+
+      document.querySelector('meta[name="description"]')
+        .setAttribute("content", d.metaDescription);
+
+      Object.keys(d).forEach(key => {
+        const el = document.getElementById(key);
+        if (el) el.innerText = d[key];
+      });
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vote Priority | UVT Localyze</title>
+
+  <meta name="description" content="Vote on a community priority and help guide the next territorial actions with UVT Localyze.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <!-- =====================================================
+           3.1 INTRO
+      ====================================================== -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <!-- =====================================================
+           4. PRIORITY OPTIONS
+      ====================================================== -->
+      <section class="card poll-options">
+
+        <button type="button" onclick="votarPrioridade('Mapear problemas de infraestrutura')">
+          <span id="option1Title"></span>
+          <small id="option1Desc"></small>
+        </button>
+
+        <button type="button" onclick="votarPrioridade('Fortalecer turismo local')">
+          <span id="option2Title"></span>
+          <small id="option2Desc"></small>
+        </button>
+
+        <button type="button" onclick="votarPrioridade('Divulgar negócios locais')">
+          <span id="option3Title"></span>
+          <small id="option3Desc"></small>
+        </button>
+
+        <button type="button" onclick="votarPrioridade('Criar ações educativas')">
+          <span id="option4Title"></span>
+          <small id="option4Desc"></small>
+        </button>
+
+      </section>
+
+
+      <!-- =====================================================
+           5. CONTEXT
+      ====================================================== -->
+      <section class="card impact">
+        <h3 id="contextTitle"></h3>
+
+        <p class="sub" id="context1"></p>
+        <p class="sub" id="context2"></p>
+      </section>
+
+
+      <!-- =====================================================
+           6. NAVIGATION
+      ====================================================== -->
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       7. FLOATING DASHBOARD
+  ====================================================== -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <!-- =====================================================
+       8. MULTILANGUAGE SCRIPT
+  ====================================================== -->
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Vote Priority | UVT Localyze",
+        metaDescription: "Vote on a community priority and help guide the next territorial actions with UVT Localyze.",
+
+        badge: "Priority",
+        title: "Which action should come first?",
+        intro1: "Vote for the priority you believe should receive more urgent attention in the territory.",
+        introNote: "By voting, you generate 8 UVT. Each user can vote only once in this stage.",
+
+        option1Title: "🛣️ Map infrastructure issues",
+        option1Desc: "Streets, access routes, lighting, drainage and critical points.",
+        option2Title: "🏞️ Strengthen local tourism",
+        option2Desc: "Guides, routes, experiences, attractions and territorial visibility.",
+        option3Title: "🏪 Promote local businesses",
+        option3Desc: "Stores, services, producers, entrepreneurs and opportunities.",
+        option4Title: "📚 Create educational actions",
+        option4Desc: "Courses, workshops, digital training, youth and knowledge.",
+
+        contextTitle: "Why vote?",
+        context1: "This vote helps organize the next steps of the project. The community points the direction, and the system transforms participation into strategic insight.",
+        context2: "It is not an automatic decision or a promise of immediate execution. It is a collective signal to understand where the strongest perceived urgency is.",
+
+        backBtn: "← Back to actions",
+        dashboardBtn: "View dashboard",
+        walletBtn: "View my wallet",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Votar Prioridade | UVT Localyze",
+        metaDescription: "Vote em uma prioridade comunitária e ajude a orientar as próximas ações do território com o UVT Localyze.",
+
+        badge: "Prioridade",
+        title: "Qual ação deve vir primeiro?",
+        intro1: "Vote na prioridade que você acredita que deve ser tratada com mais urgência no território.",
+        introNote: "Ao votar, você gera 8 UVT. Cada usuário pode votar apenas uma vez nesta etapa.",
+
+        option1Title: "🛣️ Mapear problemas de infraestrutura",
+        option1Desc: "Ruas, acessos, iluminação, bueiros e pontos críticos.",
+        option2Title: "🏞️ Fortalecer turismo local",
+        option2Desc: "Guias, rotas, experiências, atrativos e divulgação territorial.",
+        option3Title: "🏪 Divulgar negócios locais",
+        option3Desc: "Comércios, serviços, produtores, empreendedores e oportunidades.",
+        option4Title: "📚 Criar ações educativas",
+        option4Desc: "Cursos, oficinas, formação digital, juventude e conhecimento.",
+
+        contextTitle: "Por que votar?",
+        context1: "Esse voto ajuda a organizar os próximos passos do projeto. A comunidade aponta a direção, e o sistema transforma essa participação em leitura estratégica.",
+        context2: "Não é uma decisão automática nem uma promessa de execução imediata. É um sinal coletivo para entender onde existe mais urgência percebida.",
+
+        backBtn: "← Voltar às atividades",
+        dashboardBtn: "Ver painel",
+        walletBtn: "Ver minha carteira",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Votar Prioridad | UVT Localyze",
+        metaDescription: "Vota por una prioridad comunitaria y ayuda a orientar las próximas acciones del territorio con UVT Localyze.",
+
+        badge: "Prioridad",
+        title: "¿Qué acción debe venir primero?",
+        intro1: "Vota por la prioridad que crees que debe recibir atención más urgente en el territorio.",
+        introNote: "Al votar, generas 8 UVT. Cada usuario puede votar solo una vez en esta etapa.",
+
+        option1Title: "🛣️ Mapear problemas de infraestructura",
+        option1Desc: "Calles, accesos, iluminación, drenaje y puntos críticos.",
+        option2Title: "🏞️ Fortalecer el turismo local",
+        option2Desc: "Guías, rutas, experiencias, atractivos y visibilidad territorial.",
+        option3Title: "🏪 Divulgar negocios locales",
+        option3Desc: "Comercios, servicios, productores, emprendedores y oportunidades.",
+        option4Title: "📚 Crear acciones educativas",
+        option4Desc: "Cursos, talleres, formación digital, juventud y conocimiento.",
+
+        contextTitle: "¿Por qué votar?",
+        context1: "Este voto ayuda a organizar los próximos pasos del proyecto. La comunidad señala la dirección, y el sistema transforma esa participación en lectura estratégica.",
+        context2: "No es una decisión automática ni una promesa de ejecución inmediata. Es una señal colectiva para entender dónde existe más urgencia percibida.",
+
+        backBtn: "← Volver a actividades",
+        dashboardBtn: "Ver panel",
+        walletBtn: "Ver mi cartera",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+
+  <!-- =====================================================
+       9. SCRIPTS
+  ====================================================== -->
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

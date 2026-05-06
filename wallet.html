@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My UVT Wallet | UVT Localyze</title>
+
+  <meta name="description" content="Track your UVT balance, reputation and participation history.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+<header class="topbar">
+  <img src="assets/Logotipo UVT Localyze.png" class="logo">
+
+  <span class="badge" id="badge"></span>
+
+  <div class="lang-switch">
+    <button onclick="setLang('pt')">🇧🇷</button>
+    <button onclick="setLang('en')">🇺🇸</button>
+    <button onclick="setLang('es')">🇪🇸</button>
+  </div>
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+<main>
+
+<section class="hero card">
+  <h1 id="title"></h1>
+
+  <p class="sub" id="intro1"></p>
+  <p class="prototype-note" id="intro2"></p>
+
+  <div class="saldo-box">
+    <p id="balanceLabel"></p>
+    <h2><span id="walletSaldo">0</span> UVT</h2>
+  </div>
+
+  <div class="user-level-box">
+    <div class="level-header">
+      <span id="walletLevelIcon">🌱</span>
+      <strong id="walletLevel"></strong>
+    </div>
+
+    <div class="level-progress-bar">
+      <div class="level-progress-fill" id="walletLevelProgress"></div>
+    </div>
+
+    <span class="level-next" id="walletLevelNext"></span>
+  </div>
+</section>
+
+
+<section class="card">
+  <h3 id="statusTitle"></h3>
+
+  <div class="metric-grid">
+
+    <div class="metric-card">
+      <span id="profileLabel"></span>
+      <strong id="walletStatus"></strong>
+      <small id="profileDesc"></small>
+    </div>
+
+    <div class="metric-card featured-metric">
+      <span id="totalLabel"></span>
+      <strong id="walletTotalGerado">0</strong>
+      <small id="totalDesc"></small>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="card">
+  <h3 id="historyTitle"></h3>
+
+  <p class="sub" id="historyDesc"></p>
+
+  <div id="walletHistorico">
+    <p class="sub" id="loadingText"></p>
+  </div>
+</section>
+
+
+<section class="card">
+  <h3 id="protectTitle"></h3>
+
+  <div class="wallet-save-box">
+    <strong id="protectStrong"></strong>
+
+    <p id="protectText"></p>
+
+    <button onclick="loginComGoogle()" class="btn wallet-btn" id="protectBtn"></button>
+  </div>
+</section>
+
+
+<section class="card nav-actions">
+  <a href="action.html" class="btn primary" id="generateBtn"></a>
+  <a href="reward.html" class="btn secondary" id="rewardBtn"></a>
+  <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+  <a href="index.html" class="btn secondary" id="backBtn"></a>
+</section>
+
+</main>
+</div>
+
+
+<a href="dashboard.html" class="dashboard-floating-card">
+  <span class="dash-label" id="dashLabel"></span>
+  <strong><span id="teaserUVT">0</span> UVT</strong>
+  <small id="dashText"></small>
+</a>
+
+
+<!-- =====================================================
+     MULTI LANGUAGE
+===================================================== -->
+<script>
+const t = {
+
+en:{
+htmlLang:"en",
+pageTitle:"My UVT Wallet",
+
+badge:"My wallet",
+title:"Your UVT wallet",
+intro1:"Track your balance, reputation and participation.",
+intro2:"Balance is spendable. Total defines your level.",
+
+balanceLabel:"Available balance",
+
+levelText:"Level 1 — Participant",
+levelNext:"Keep participating to level up",
+
+statusTitle:"Status",
+profileLabel:"Profile",
+profileDesc:"Wallet status",
+totalLabel:"Total generated",
+totalDesc:"Accumulated reputation",
+
+historyTitle:"Recent history",
+historyDesc:"Your latest actions",
+loadingText:"Loading...",
+
+protectTitle:"Protect your progress",
+protectStrong:"Save wallet with Google",
+protectText:"Connect your account to keep your data safe",
+protectBtn:"Save my wallet",
+
+generateBtn:"Generate more UVT",
+rewardBtn:"View rewards",
+dashboardBtn:"View dashboard",
+backBtn:"← Back",
+
+dashLabel:"Live panel",
+dashText:"View data →"
+},
+
+pt:{
+htmlLang:"pt-BR",
+pageTitle:"Minha Carteira",
+
+badge:"Minha carteira",
+title:"Sua carteira UVT",
+intro1:"Acompanhe seu saldo e participação.",
+intro2:"Saldo é utilizável. Total define nível.",
+
+balanceLabel:"Saldo disponível",
+
+levelText:"Nível 1 — Participante",
+levelNext:"Continue participando",
+
+statusTitle:"Status",
+profileLabel:"Perfil",
+profileDesc:"Status da carteira",
+totalLabel:"Total gerado",
+totalDesc:"Reputação acumulada",
+
+historyTitle:"Histórico",
+historyDesc:"Suas últimas ações",
+loadingText:"Carregando...",
+
+protectTitle:"Proteja seu progresso",
+protectStrong:"Salvar com Google",
+protectText:"Conecte sua conta para não perder dados",
+protectBtn:"Salvar carteira",
+
+generateBtn:"Gerar mais UVT",
+rewardBtn:"Ver recompensas",
+dashboardBtn:"Ver painel",
+backBtn:"← Voltar",
+
+dashLabel:"Painel",
+dashText:"Ver →"
+},
+
+es:{
+htmlLang:"es",
+pageTitle:"Mi Cartera",
+
+badge:"Mi cartera",
+title:"Tu cartera UVT",
+intro1:"Sigue tu saldo y participación.",
+intro2:"Saldo se usa. Total define nivel.",
+
+balanceLabel:"Saldo disponible",
+
+levelText:"Nivel 1 — Participante",
+levelNext:"Sigue participando",
+
+statusTitle:"Estado",
+profileLabel:"Perfil",
+profileDesc:"Estado de la cartera",
+totalLabel:"Total generado",
+totalDesc:"Reputación acumulada",
+
+historyTitle:"Historial",
+historyDesc:"Tus últimas acciones",
+loadingText:"Cargando...",
+
+protectTitle:"Protege tu progreso",
+protectStrong:"Guardar con Google",
+protectText:"Conecta tu cuenta",
+protectBtn:"Guardar cartera",
+
+generateBtn:"Generar más UVT",
+rewardBtn:"Ver recompensas",
+dashboardBtn:"Ver panel",
+backBtn:"← Volver",
+
+dashLabel:"Panel",
+dashText:"Ver →"
+}
+};
+
+function setLang(lang){
+const selected=t[lang]?lang:"en";
+const d=t[selected];
+
+localStorage.setItem("uvt_lang",selected);
+
+document.documentElement.lang=d.htmlLang;
+document.title=d.pageTitle;
+
+Object.keys(d).forEach(k=>{
+const el=document.getElementById(k);
+if(el) el.innerText=d[k];
+});
+
+document.getElementById("walletLevel").innerText=d.levelText;
+document.getElementById("walletLevelNext").innerText=d.levelNext;
+}
+
+const savedLang=localStorage.getItem("uvt_lang")||"en";
+setLang(savedLang);
+</script>
+
+
+<script type="module" src="js/firebase.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  if (window.firebaseReady) await window.firebaseReady;
+  if (typeof renderWallet === "function") renderWallet();
+});
+</script>
+
+</body>
+</html>

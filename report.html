@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Report Issue | UVT Localyze</title>
+
+  <meta name="description" content="Report local issues and help map real territorial demands with UVT Localyze.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <section class="card">
+        <label for="problemaTipo" id="labelType"></label>
+        <select id="problemaTipo">
+          <option id="option1"></option>
+          <option id="option2"></option>
+          <option id="option3"></option>
+          <option id="option4"></option>
+          <option id="option5"></option>
+          <option id="option6"></option>
+          <option id="option7"></option>
+        </select>
+
+        <label for="problemaDescricao" id="labelDescription"></label>
+        <textarea id="problemaDescricao"></textarea>
+
+        <label for="problemaFoto" id="labelPhoto"></label>
+        <input
+          type="file"
+          id="problemaFoto"
+          accept="image/*"
+        >
+
+        <button type="button" onclick="enviarProblema()" id="submitBtn"></button>
+      </section>
+
+
+      <section class="card impact">
+        <h3 id="whyTitle"></h3>
+
+        <p class="sub" id="why1"></p>
+        <p class="sub" id="why2"></p>
+      </section>
+
+
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Report Issue | UVT Localyze",
+        metaDescription: "Report local issues and help map real territorial demands with UVT Localyze.",
+
+        badge: "Local report",
+        title: "Report a local issue",
+        intro1: "Register situations such as broken drainage, poor lighting, damaged roads, accumulated waste, missing signs or access problems.",
+        introNote: "By reporting a valid issue, you generate 15 UVT.",
+
+        labelType: "Issue type",
+        option1: "Street or road",
+        option2: "Drainage or culvert",
+        option3: "Public lighting",
+        option4: "Waste or garbage",
+        option5: "Signage",
+        option6: "Damaged access",
+        option7: "Other",
+
+        labelDescription: "Issue description",
+        placeholderDescription: "Describe the issue, where it happens and why it deserves attention...",
+        labelPhoto: "Issue photo",
+        submitBtn: "Report issue (+15 UVT)",
+
+        whyTitle: "Why does this report matter?",
+        why1: "Each reported issue helps build an initial map of territorial demands.",
+        why2: "At this stage, reports do not replace official public service channels, but they help organize community signals for reading, analysis and future actions.",
+
+        backBtn: "← Back to actions",
+        dashboardBtn: "View dashboard",
+        walletBtn: "View my wallet",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Reportar Problema | UVT Localyze",
+        metaDescription: "Reporte problemas locais e ajude a mapear demandas reais do território com o UVT Localyze.",
+
+        badge: "Registro local",
+        title: "Reporte um problema local",
+        intro1: "Registre situações como bueiro quebrado, iluminação ruim, estrada danificada, lixo acumulado, falta de sinalização ou problemas de acesso.",
+        introNote: "Ao registrar um problema válido, você gera 15 UVT.",
+
+        labelType: "Tipo de problema",
+        option1: "Rua ou estrada",
+        option2: "Bueiro ou drenagem",
+        option3: "Iluminação pública",
+        option4: "Lixo ou descarte irregular",
+        option5: "Sinalização",
+        option6: "Acesso danificado",
+        option7: "Outro",
+
+        labelDescription: "Descrição do problema",
+        placeholderDescription: "Descreva o problema, onde acontece e por que ele merece atenção...",
+        labelPhoto: "Foto do problema",
+        submitBtn: "Registrar problema (+15 UVT)",
+
+        whyTitle: "Por que esse registro importa?",
+        why1: "Cada problema registrado ajuda a formar um mapa inicial de demandas do território.",
+        why2: "Nesta fase, os registros não substituem canais oficiais de atendimento público, mas ajudam a organizar sinais comunitários para leitura, análise e futuras ações.",
+
+        backBtn: "← Voltar às atividades",
+        dashboardBtn: "Ver painel",
+        walletBtn: "Ver minha carteira",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Reportar Problema | UVT Localyze",
+        metaDescription: "Reporta problemas locales y ayuda a mapear demandas reales del territorio con UVT Localyze.",
+
+        badge: "Registro local",
+        title: "Reporta un problema local",
+        intro1: "Registra situaciones como drenaje roto, mala iluminación, camino dañado, basura acumulada, falta de señalización o problemas de acceso.",
+        introNote: "Al registrar un problema válido, generas 15 UVT.",
+
+        labelType: "Tipo de problema",
+        option1: "Calle o carretera",
+        option2: "Drenaje o alcantarilla",
+        option3: "Iluminación pública",
+        option4: "Basura o residuos",
+        option5: "Señalización",
+        option6: "Acceso dañado",
+        option7: "Otro",
+
+        labelDescription: "Descripción del problema",
+        placeholderDescription: "Describe el problema, dónde ocurre y por qué merece atención...",
+        labelPhoto: "Foto del problema",
+        submitBtn: "Reportar problema (+15 UVT)",
+
+        whyTitle: "¿Por qué importa este registro?",
+        why1: "Cada problema registrado ayuda a formar un mapa inicial de demandas del territorio.",
+        why2: "En esta fase, los registros no reemplazan canales oficiales de atención pública, pero ayudan a organizar señales comunitarias para lectura, análisis y futuras acciones.",
+
+        backBtn: "← Volver a actividades",
+        dashboardBtn: "Ver panel",
+        walletBtn: "Ver mi cartera",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      const desc = document.getElementById("problemaDescricao");
+      if (desc) {
+        desc.placeholder = t.placeholderDescription;
+      }
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

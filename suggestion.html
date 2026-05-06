@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Suggest Improvement | UVT Localyze</title>
+
+  <meta name="description" content="Send improvement suggestions for the territory and help UVT Localyze map useful ideas for the community.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+
+        <p class="prototype-note" id="introNote"></p>
+      </section>
+
+
+      <section class="card">
+        <label for="sugestaoTexto" id="labelSuggestion"></label>
+
+        <textarea id="sugestaoTexto"></textarea>
+
+        <button type="button" onclick="enviarSugestao()" id="submitBtn"></button>
+      </section>
+
+
+      <section class="card impact">
+        <h3 id="goodTitle"></h3>
+
+        <p class="sub" id="good1"></p>
+        <p class="sub" id="good2"></p>
+      </section>
+
+
+      <section class="card nav-actions">
+        <a href="action.html" class="btn secondary" id="backBtn"></a>
+        <a href="dashboard.html" class="btn secondary" id="dashboardBtn"></a>
+        <a href="wallet.html" class="btn secondary" id="walletBtn"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "Suggest Improvement | UVT Localyze",
+        metaDescription: "Send improvement suggestions for the territory and help UVT Localyze map useful ideas for the community.",
+
+        badge: "Suggestion",
+        title: "What improvement do you suggest?",
+        intro1: "Your idea can help guide future actions, projects and decisions in the territory.",
+        introNote: "By sending a valid suggestion, you generate 10 UVT.",
+
+        labelSuggestion: "Your suggestion",
+        placeholderSuggestion: "Write your suggestion here. It can be an idea for tourism, education, culture, infrastructure, local businesses, environment or community...",
+
+        submitBtn: "Send suggestion (+10 UVT)",
+
+        goodTitle: "What is a good suggestion?",
+        good1: "A good suggestion points to a possible improvement, explains a problem or opportunity and helps show why it matters to the community.",
+        good2: "It does not need to be perfect. Simple ideas, when well registered, can reveal important paths.",
+
+        backBtn: "← Back to actions",
+        dashboardBtn: "View dashboard",
+        walletBtn: "View my wallet",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Sugerir Melhoria | UVT Localyze",
+        metaDescription: "Envie sugestões de melhoria para o território e ajude o UVT Localyze a mapear ideias úteis para a comunidade.",
+
+        badge: "Sugestão",
+        title: "Que melhoria você sugere?",
+        intro1: "Sua ideia pode ajudar a orientar futuras ações, projetos e decisões no território.",
+        introNote: "Ao enviar uma sugestão válida, você gera 10 UVT.",
+
+        labelSuggestion: "Sua sugestão",
+        placeholderSuggestion: "Escreva sua sugestão aqui. Pode ser uma ideia para turismo, educação, cultura, infraestrutura, negócios locais, meio ambiente ou comunidade...",
+
+        submitBtn: "Enviar sugestão (+10 UVT)",
+
+        goodTitle: "O que é uma boa sugestão?",
+        good1: "Uma boa sugestão aponta uma melhoria possível, explica o problema ou oportunidade e ajuda a entender por que aquilo importa para a comunidade.",
+        good2: "Não precisa ser perfeita. Ideias simples, quando bem registradas, podem revelar caminhos importantes.",
+
+        backBtn: "← Voltar às atividades",
+        dashboardBtn: "Ver painel",
+        walletBtn: "Ver minha carteira",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Sugerir Mejora | UVT Localyze",
+        metaDescription: "Envía sugerencias de mejora para el territorio y ayuda a UVT Localyze a mapear ideas útiles para la comunidad.",
+
+        badge: "Sugerencia",
+        title: "¿Qué mejora sugieres?",
+        intro1: "Tu idea puede ayudar a orientar futuras acciones, proyectos y decisiones en el territorio.",
+        introNote: "Al enviar una sugerencia válida, generas 10 UVT.",
+
+        labelSuggestion: "Tu sugerencia",
+        placeholderSuggestion: "Escribe tu sugerencia aquí. Puede ser una idea para turismo, educación, cultura, infraestructura, negocios locales, medio ambiente o comunidad...",
+
+        submitBtn: "Enviar sugerencia (+10 UVT)",
+
+        goodTitle: "¿Qué es una buena sugerencia?",
+        good1: "Una buena sugerencia señala una mejora posible, explica un problema u oportunidad y ayuda a entender por qué eso importa para la comunidad.",
+        good2: "No necesita ser perfecta. Las ideas simples, cuando están bien registradas, pueden revelar caminos importantes.",
+
+        backBtn: "← Volver a actividades",
+        dashboardBtn: "Ver panel",
+        walletBtn: "Ver mi cartera",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      const suggestion = document.getElementById("sugestaoTexto");
+      if (suggestion) {
+        suggestion.placeholder = t.placeholderSuggestion;
+      }
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

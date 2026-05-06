@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       1. CONFIG
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UVT Localyze — Participação que gera valor</title>
+
+  <meta name="description" content="Participe do UVT Localyze e ajude a transformar participação da comunidade em dados reais, prioridades territoriais e decisões melhores.">
+
+  <!-- =====================================================
+       OPEN GRAPH / SOCIAL PREVIEW
+  ====================================================== -->
+  <meta property="og:title" content="UVT Localyze — Participação que gera valor">
+  <meta property="og:description" content="Leva 1 minuto. Sua voz entra no sistema e ajuda a mapear prioridades reais da comunidade.">
+  <meta property="og:image" content="https://uvt.altapiata.com.br/assets/preview.jpg">
+  <meta property="og:image:secure_url" content="https://uvt.altapiata.com.br/assets/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://uvt.altapiata.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UVT Localyze">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UVT Localyze — Participação que gera valor">
+  <meta name="twitter:description" content="Transformando participação em decisões reais da comunidade.">
+  <meta name="twitter:image" content="https://uvt.altapiata.com.br/assets/preview.jpg">
+
+  <link rel="canonical" href="https://uvt.altapiata.com.br/">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         2. TOPBAR
+    ====================================================== -->
+    <header class="topbar">
+      <img
+        src="assets/Logotipo UVT Localyze.png"
+        class="logo"
+        alt="UVT Localyze Logo"
+      >
+
+      <span class="badge" id="badge"></span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+
+    <!-- =====================================================
+         3. MAIN CONTENT
+    ====================================================== -->
+    <main>
+
+      <!-- =====================================================
+           3.1 HERO / ENTRY
+      ====================================================== -->
+      <section class="hero card">
+        <img
+          src="assets/Logotipo UVT Localyze.png"
+          class="hero-logo"
+          alt="UVT Localyze Logo"
+        >
+
+        <h1 id="title"></h1>
+
+        <p class="sub" id="intro1"></p>
+        <p class="sub" id="intro2"></p>
+
+        <p class="prototype-note" id="prototypeNote"></p>
+
+        <a href="about.html" class="btn secondary" id="aboutBtn"></a>
+
+
+        <!-- =====================================================
+             3.2 USER BALANCE
+        ====================================================== -->
+        <div class="saldo-box">
+          <p id="balanceLabel"></p>
+          <h2><span id="saldo">0</span> UVT</h2>
+        </div>
+
+
+        <!-- =====================================================
+             3.3 LEVEL / REPUTATION
+        ====================================================== -->
+        <div class="user-level-box">
+          <div class="level-header">
+            <span id="levelIcon">🌱</span>
+            <strong id="userLevel">Level 1 — Participant</strong>
+          </div>
+
+          <div class="level-progress-bar">
+            <div class="level-progress-fill" id="userLevelProgress"></div>
+          </div>
+
+          <span class="level-next" id="userLevelNext">
+            Keep participating to level up.
+          </span>
+        </div>
+
+
+        <!-- =====================================================
+             3.4 SAVE WALLET
+        ====================================================== -->
+        <div class="wallet-save-box">
+          <strong id="walletSaveTitle"></strong>
+
+          <p id="walletSaveText"></p>
+
+          <button onclick="loginComGoogle()" class="btn wallet-btn" id="walletSaveBtn"></button>
+        </div>
+
+
+        <!-- =====================================================
+             3.5 MAIN CTAS
+        ====================================================== -->
+        <div class="cta-group">
+          <a href="action.html" class="btn primary" id="startBtn"></a>
+
+          <a href="wallet.html" class="btn wallet-access" id="walletBtn"></a>
+
+          <a href="reward.html" class="btn secondary" id="rewardBtn"></a>
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           4. COLLECTIVE GOAL
+      ====================================================== -->
+      <section class="card impact">
+        <h3 id="goalTitle"></h3>
+
+        <p class="sub" id="goal1"></p>
+        <p class="sub" id="goal2"></p>
+
+        <a href="impact.html" class="btn primary" id="impactBtn"></a>
+      </section>
+
+
+      <!-- =====================================================
+           5. HOW IT WORKS
+      ====================================================== -->
+      <section class="card">
+        <h3 id="howTitle"></h3>
+
+        <div class="steps">
+
+          <div class="step">
+            <strong id="step1Title"></strong>
+            <p id="step1Text"></p>
+          </div>
+
+          <div class="step">
+            <strong id="step2Title"></strong>
+            <p id="step2Text"></p>
+          </div>
+
+          <div class="step">
+            <strong id="step3Title"></strong>
+            <p id="step3Text"></p>
+          </div>
+
+          <div class="step">
+            <strong id="step4Title"></strong>
+            <p id="step4Text"></p>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- =====================================================
+           6. WHY IT MATTERS
+      ====================================================== -->
+      <section class="card impact">
+        <h3 id="whyTitle"></h3>
+
+        <p class="sub" id="why1"></p>
+        <p class="sub" id="why2"></p>
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       7. FLOATING DASHBOARD
+  ====================================================== -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open community dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="teaserInsight"></small>
+  </a>
+
+
+  <!-- =====================================================
+       8. MULTILANGUAGE SCRIPT
+  ====================================================== -->
+  <script>
+    const translations = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "UVT Localyze",
+        metaDescription: "Join the construction of local value with UVT Localyze, a digital participation experience connected to real territorial impact.",
+
+        badge: "Functional MVP",
+        title: "Join the construction of local value.",
+        intro1: "Contribute through simple actions, generate UVT and follow how collective participation can reveal real territorial priorities.",
+        intro2: "Each participation helps identify demands, strengthen projects and create benefits for the community.",
+        prototypeNote: "Functional prototype in testing phase. This experience demonstrates the initial UVT Localyze flow.",
+
+        aboutBtn: "Understand the project",
+
+        balanceLabel: "Your available balance",
+
+        userLevelText: "Level 1 — Participant",
+        userLevelNextText: "Keep participating to level up.",
+
+        walletSaveTitle: "Save your wallet",
+        walletSaveText: "Connect your Google account to keep your UVT, follow your progress and avoid losing your history.",
+        walletSaveBtn: "Save my wallet with Google",
+
+        startBtn: "Start now",
+        walletBtn: "My wallet",
+        rewardBtn: "View benefits",
+
+        goalTitle: "Collective goal",
+        goal1: "The community is accumulating UVT to support new territorial actions.",
+        goal2: "When the collective goal is reached, the system unlocks new participation milestones.",
+        impactBtn: "View collective impact",
+
+        howTitle: "How it works",
+        step1Title: "1. Participate",
+        step1Text: "Answer surveys, register perceptions and contribute useful information about the territory.",
+        step2Title: "2. Generate UVT",
+        step2Text: "Each validated participation generates Territorial Value Units inside the system.",
+        step3Title: "3. Build reputation",
+        step3Text: "Your balance can be used for benefits, while your total generated continues counting toward your level.",
+        step4Title: "4. Follow impact",
+        step4Text: "See how collective participation becomes territorial insight, goals and community actions.",
+
+        whyTitle: "Why does this matter?",
+        why1: "You are not just interacting with a platform. You are helping build a more active, visible and participatory local economy.",
+        why2: "UVT Localyze transforms small actions into collective signals. Well-organized collective signals become strategic force. That is where the game gets interesting.",
+
+        dashLabel: "Live panel",
+        teaserInsight: "View community data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "UVT Localyze",
+        metaDescription: "Participe da construção de valor local com o UVT Localyze, uma experiência digital conectada ao impacto territorial real.",
+
+        badge: "MVP funcional",
+        title: "Participe da construção de valor local.",
+        intro1: "Contribua com ações simples, gere UVT e acompanhe como a participação coletiva pode revelar prioridades reais do território.",
+        intro2: "Cada participação ajuda a identificar demandas, fortalecer projetos e criar benefícios para a comunidade.",
+        prototypeNote: "Protótipo funcional em fase de testes. Esta experiência demonstra o fluxo inicial do UVT Localyze.",
+
+        aboutBtn: "Entender o projeto",
+
+        balanceLabel: "Seu saldo disponível",
+
+        userLevelText: "Nível 1 — Participante",
+        userLevelNextText: "Continue participando para subir de nível.",
+
+        walletSaveTitle: "Salve sua carteira",
+        walletSaveText: "Conecte sua conta Google para manter seus UVTs, acompanhar sua evolução e não perder seu progresso.",
+        walletSaveBtn: "Salvar minha carteira com Google",
+
+        startBtn: "Começar agora",
+        walletBtn: "Minha carteira",
+        rewardBtn: "Ver benefícios",
+
+        goalTitle: "Meta coletiva",
+        goal1: "A comunidade está acumulando UVTs para impulsionar novas ações no território.",
+        goal2: "Quando a meta coletiva é atingida, o sistema desbloqueia novos marcos de participação.",
+        impactBtn: "Ver impacto coletivo",
+
+        howTitle: "Como funciona",
+        step1Title: "1. Participe",
+        step1Text: "Responda enquetes, registre percepções e contribua com informações úteis para o território.",
+        step2Title: "2. Gere UVT",
+        step2Text: "Cada participação validada gera Unidade de Valor Territorial dentro do sistema.",
+        step3Title: "3. Evolua sua reputação",
+        step3Text: "Seu saldo pode ser usado em benefícios, mas seu total gerado continua contando para seu nível.",
+        step4Title: "4. Acompanhe o impacto",
+        step4Text: "Veja como a participação coletiva se transforma em leitura territorial, metas e ações comunitárias.",
+
+        whyTitle: "Por que isso importa?",
+        why1: "Você não está apenas interagindo com uma plataforma. Está ajudando a construir uma economia local mais ativa, visível e participativa.",
+        why2: "O UVT Localyze transforma pequenas ações em sinais coletivos. E sinal coletivo bem organizado vira força estratégica. É aqui que o jogo começa a ficar interessante.",
+
+        dashLabel: "Painel vivo",
+        teaserInsight: "Ver dados da comunidade →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "UVT Localyze",
+        metaDescription: "Participa en la construcción de valor local con UVT Localyze, una experiencia digital conectada al impacto territorial real.",
+
+        badge: "MVP funcional",
+        title: "Participa en la construcción de valor local.",
+        intro1: "Contribuye con acciones simples, genera UVT y acompaña cómo la participación colectiva puede revelar prioridades reales del territorio.",
+        intro2: "Cada participación ayuda a identificar demandas, fortalecer proyectos y crear beneficios para la comunidad.",
+        prototypeNote: "Prototipo funcional en fase de pruebas. Esta experiencia demuestra el flujo inicial de UVT Localyze.",
+
+        aboutBtn: "Entender el proyecto",
+
+        balanceLabel: "Tu saldo disponible",
+
+        userLevelText: "Nivel 1 — Participante",
+        userLevelNextText: "Sigue participando para subir de nivel.",
+
+        walletSaveTitle: "Guarda tu cartera",
+        walletSaveText: "Conecta tu cuenta de Google para mantener tus UVT, seguir tu evolución y no perder tu progreso.",
+        walletSaveBtn: "Guardar mi cartera con Google",
+
+        startBtn: "Comenzar ahora",
+        walletBtn: "Mi cartera",
+        rewardBtn: "Ver beneficios",
+
+        goalTitle: "Meta colectiva",
+        goal1: "La comunidad está acumulando UVT para impulsar nuevas acciones en el territorio.",
+        goal2: "Cuando se alcanza la meta colectiva, el sistema desbloquea nuevos hitos de participación.",
+        impactBtn: "Ver impacto colectivo",
+
+        howTitle: "Cómo funciona",
+        step1Title: "1. Participa",
+        step1Text: "Responde encuestas, registra percepciones y contribuye con información útil para el territorio.",
+        step2Title: "2. Genera UVT",
+        step2Text: "Cada participación validada genera Unidades de Valor Territorial dentro del sistema.",
+        step3Title: "3. Evoluciona tu reputación",
+        step3Text: "Tu saldo puede usarse en beneficios, pero tu total generado sigue contando para tu nivel.",
+        step4Title: "4. Acompaña el impacto",
+        step4Text: "Mira cómo la participación colectiva se transforma en lectura territorial, metas y acciones comunitarias.",
+
+        whyTitle: "¿Por qué importa?",
+        why1: "No estás solo interactuando con una plataforma. Estás ayudando a construir una economía local más activa, visible y participativa.",
+        why2: "UVT Localyze transforma pequeñas acciones en señales colectivas. Una señal colectiva bien organizada se convierte en fuerza estratégica. Aquí es donde el juego se pone interesante.",
+
+        dashLabel: "Panel vivo",
+        teaserInsight: "Ver datos de la comunidad →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", t.metaDescription);
+      }
+
+      Object.keys(t).forEach((key) => {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerText = t[key];
+        }
+      });
+
+      const userLevel = document.getElementById("userLevel");
+      if (
+        (userLevel && userLevel.innerText.includes("Level 1")) ||
+        (userLevel && userLevel.innerText.includes("Nível 1")) ||
+        (userLevel && userLevel.innerText.includes("Nivel 1"))
+      ) {
+        userLevel.innerText = t.userLevelText;
+      }
+
+      const userLevelNext = document.getElementById("userLevelNext");
+      if (userLevelNext) {
+        userLevelNext.innerText = t.userLevelNextText;
+      }
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <!-- =====================================================
+       9. SCRIPTS
+  ====================================================== -->
+  <script type="module" src="js/firebase.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
+
+</body>
+</html>
