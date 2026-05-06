@@ -1,126 +1,173 @@
-<h1>UVT Localyze</h1>
+# UVT Localyze
 
-<p>
-  Infraestrutura digital leve que transforma participação comunitária em inteligência territorial.
-</p>
+A lightweight digital infrastructure that transforms community participation into territorial intelligence.
 
-<hr>
+---
 
-<h2>🧠 O que é</h2>
+## Live Demo
 
-<p>
-  O <strong>UVT Localyze</strong> é um sistema que converte ações da comunidade em dados estruturados,
-  permitindo identificar prioridades reais em tempo quase real.
-</p>
+https://uvt.altapiata.com.br
 
-<p>
-  Cada interação gera uma <strong>UVT (Unidade de Valor Territorial)</strong>, criando um ciclo contínuo:
-</p>
+---
 
-<blockquote>
-  participação → dados → leitura → ação
-</blockquote>
+## What it is
 
-<hr>
+UVT Localyze is a civic participation and territorial intelligence platform designed to help communities generate structured local data through real participation.
 
-<h2>⚡ Problema</h2>
+The system transforms community actions into measurable digital value using UVT points, creating a continuous cycle:
 
-<p>
-  Comunidades frequentemente não possuem dados organizados sobre suas próprias necessidades.
-</p>
+> participation → data → insight → action
 
-<ul>
-  <li>consultas públicas são lentas</li>
-  <li>pesquisas têm baixa participação</li>
-  <li>decisões são tomadas com pouca base real</li>
-</ul>
+---
 
-<hr>
+## Problem
 
-<h2>🚀 Solução</h2>
+Small communities often lack organized and accessible tools to understand their own realities.
 
-<p>
-  O UVT Localyze transforma participação em comportamento ativo através de:
-</p>
+Traditional public consultations are usually:
 
-<ul>
-  <li>enquetes comunitárias</li>
-  <li>registro de problemas locais</li>
-  <li>sugestões de melhoria</li>
-  <li>indicação de locais e iniciativas</li>
-</ul>
+- slow
+- centralized
+- low participation
+- difficult to analyze
+- disconnected from real-time local behavior
 
-<p>
-  Cada ação gera UVTs, que alimentam um sistema de leitura coletiva.
-</p>
+As a result, communities generate very little usable territorial intelligence.
 
-<hr>
+---
 
-<h2>📊 O que o sistema faz</h2>
+## Solution
 
-<ul>
-  <li>coleta dados em tempo quase real</li>
-  <li>identifica prioridades emergentes</li>
-  <li>mede o nível de engajamento da comunidade</li>
-  <li>traduz participação em inteligência acionável</li>
-</ul>
+UVT Localyze creates an interactive participation layer where citizens can:
 
-<hr>
+- answer polls
+- vote on priorities
+- report local issues
+- suggest improvements
+- indicate places and opportunities
+- track collective impact
 
-<h2>🔥 Diferencial</h2>
+Every interaction contributes to a shared participation ecosystem.
 
-<p>Não é um formulário.<br>
-Não é uma pesquisa.</p>
+---
 
-<p>
-  👉 É um sistema de participação ativa que gera dados contínuos.
-</p>
+## Key Features
 
-<hr>
+- UVT points system
+- Community participation actions
+- Polls and voting
+- Priority ranking
+- Local issue reports
+- Suggestion system
+- Place mapping
+- Wallet system
+- Reward structure
+- Community impact dashboard
+- Participation metrics
+- Progress tracking
+- Anti-farming logic
 
-<h2>🌍 Contexto</h2>
+---
 
-<p>
-  O projeto está sendo desenvolvido dentro do <strong>Ecossistema Alta Piatã</strong>,
-  atuando em comunidades regionais.
-</p>
+## How it works
 
-<hr>
+Users interact with the platform through participation modules.
 
-<h2>🧩 Status</h2>
+Each valid action generates UVT points, which are used as a recognition and engagement layer.
 
-<p>
-  Protótipo funcional em desenvolvimento.
-</p>
+The platform then aggregates participation data to help communities identify:
 
-<hr>
+- local priorities
+- recurring problems
+- engagement levels
+- territorial opportunities
+- collective interests
 
-<h2>🚀 Visão</h2>
+---
 
-<p>
-  Construir uma nova camada digital onde comunidades possam:
-</p>
+## Why Solana
 
-<ul>
-  <li>gerar seus próprios dados</li>
-  <li>compreender suas próprias dinâmicas</li>
-  <li>orientar decisões locais com base em participação real</li>
-</ul>
+UVT Localyze explores Solana as a verification and transparency layer for aggregated participation records.
 
-<hr>
+Instead of storing every individual interaction on-chain, the system can register collective participation proofs, creating:
 
-<h2>🔗 Links</h2>
+- low-cost transparency
+- public verification
+- auditable engagement records
+- scalable territorial participation infrastructure
 
-<ul>
-  <li><a href="https://www.altapiata.com.br">https://www.altapiata.com.br</a></li>
-  <li><a href="https://www.instagram.com/altapiata/">https://www.instagram.com/altapiata/</a></li>
-</ul>
+---
 
-<hr>
+## Ecosystem Context
 
-<h2>👤 Autor</h2>
+UVT Localyze is being developed as part of the Alta Piatã Ecosystem, a territorial digital infrastructure initiative based in Chapada Diamantina, Bahia, Brazil.
 
-<p>
-  Gabriel Soares<br>
-  GSXLab | Ecossistema Alta Piatã
-</p>
+The ecosystem connects multiple local layers such as:
+
+- tourism
+- culture
+- opportunities
+- community mapping
+- local business visibility
+- territorial participation
+
+---
+
+## Current Status
+
+Functional MVP / beta prototype.
+
+The project currently includes:
+
+- working frontend
+- participation system
+- dashboard
+- UVT logic
+- local interaction modules
+- impact tracking
+
+---
+
+## Vision
+
+To help communities generate their own territorial intelligence through participation.
+
+UVT Localyze aims to create a new digital layer where communities can:
+
+- organize local information
+- guide collective decisions
+- increase engagement
+- measure participation
+- create actionable territorial data
+
+---
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- Firebase (planned integration)
+- Solana verification layer (future implementation)
+
+---
+
+## Repository
+
+https://github.com/uvt-localyze/uvt-localyze
+
+---
+
+## Author
+
+Gabriel Soares  
+GSXLab — Digital Solutions Laboratory  
+Alta Piatã Ecosystem
+
+---
+
+## Links
+
+- https://uvt.altapiata.com.br
+- https://www.altapiata.com.br
+- https://www.instagram.com/altapiata/
