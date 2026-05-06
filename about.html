@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About | UVT Localyze</title>
+
+  <meta name="description" content="Understand how UVT Localyze transforms community participation into structured territorial data for local impact.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- =====================================================
+         TOPO
+    ====================================================== -->
+    <header class="topbar">
+      <img src="assets/Logotipo UVT Localyze.png" class="logo" alt="UVT Localyze Logo">
+
+      <span class="badge" id="badge">Live prototype</span>
+
+      <div class="lang-switch" aria-label="Select language">
+        <button type="button" onclick="setLang('pt')" aria-label="Português">🇧🇷</button>
+        <button type="button" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+        <button type="button" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero card">
+        <h1 id="title"></h1>
+
+        <p class="sub" id="p1"></p>
+        <p class="sub" id="p2"></p>
+
+        <p class="prototype-note" id="note"></p>
+      </section>
+
+      <!-- IDEIA CENTRAL -->
+      <section class="card">
+        <h3 id="ideaTitle"></h3>
+
+        <p class="sub" id="idea1"></p>
+        <p class="sub" id="idea2"></p>
+      </section>
+
+      <!-- PARA QUEM SERVE -->
+      <section class="card">
+        <h3 id="audienceTitle"></h3>
+
+        <div class="steps">
+          <div class="step">
+            <strong id="a1t"></strong>
+            <p id="a1"></p>
+          </div>
+
+          <div class="step">
+            <strong id="a2t"></strong>
+            <p id="a2"></p>
+          </div>
+
+          <div class="step">
+            <strong id="a3t"></strong>
+            <p id="a3"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="card">
+        <h3 id="howTitle"></h3>
+
+        <div class="steps">
+          <div class="step">
+            <strong id="s1t"></strong>
+            <p id="s1"></p>
+          </div>
+
+          <div class="step">
+            <strong id="s2t"></strong>
+            <p id="s2"></p>
+          </div>
+
+          <div class="step">
+            <strong id="s3t"></strong>
+            <p id="s3"></p>
+          </div>
+
+          <div class="step">
+            <strong id="s4t"></strong>
+            <p id="s4"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HACKATHON -->
+      <section class="card">
+        <h3 id="hackTitle"></h3>
+        <p class="sub" id="hack1"></p>
+        <p class="sub" id="hack2"></p>
+      </section>
+
+      <!-- POR QUE IMPORTA -->
+      <section class="card">
+        <h3 id="whyTitle"></h3>
+        <p class="sub" id="why1"></p>
+        <p class="sub" id="why2"></p>
+      </section>
+
+      <!-- FUTURO -->
+      <section class="card">
+        <h3 id="futureTitle"></h3>
+        <p class="sub" id="future1"></p>
+        <p class="sub" id="future2"></p>
+      </section>
+
+      <!-- NAVEGAÇÃO -->
+      <section class="card nav-actions">
+        <a href="index.html" class="btn secondary" id="back"></a>
+        <a href="action.html" class="btn primary" id="test"></a>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- DASHBOARD -->
+  <a href="dashboard.html" class="dashboard-floating-card" aria-label="Open live dashboard">
+    <span class="dash-label" id="dashLabel"></span>
+    <strong><span id="teaserUVT">0</span> UVT</strong>
+    <small id="dashBtn"></small>
+  </a>
+
+  <!-- =====================================================
+       SCRIPT MULTILÍNGUE
+  ====================================================== -->
+  <script>
+    const t = {
+      en: {
+        htmlLang: "en",
+        pageTitle: "About | UVT Localyze",
+        metaDesc: "Understand how UVT Localyze transforms community participation into structured territorial data for local impact.",
+
+        badge: "Live prototype",
+        title: "What is UVT Localyze?",
+        p1: "A territorial participation platform that turns real community actions into structured data.",
+        p2: "People participate, the territory reveals its priorities, and data helps guide smarter decisions.",
+        note: "Functional prototype being tested with real local use.",
+
+        ideaTitle: "Core idea",
+        idea1: "UVT Localyze does not invent participation. It organizes what already exists: opinion, presence, observation, suggestions and local collaboration.",
+        idea2: "Each action generates UVT as a symbolic participation record and helps build a living territorial reading.",
+
+        audienceTitle: "Who it serves",
+        a1t: "Community",
+        a1: "People answer surveys, vote on priorities, suggest improvements and follow collective impact.",
+        a2t: "Managers and institutions",
+        a2: "They access organized data about demands, interests and real signals from the population.",
+        a3t: "Hackathon and evaluators",
+        a3: "They see a prototype connected to real-world use, local participation and scalable potential.",
+
+        howTitle: "How it works",
+        s1t: "1. Participation",
+        s1: "Users answer surveys, vote on priorities, submit suggestions, indicate places or report problems.",
+        s2t: "2. Organization",
+        s2: "The system structures information and reduces duplication to avoid distortion.",
+        s3t: "3. UVT",
+        s3: "Each contribution generates a territorial value record, without tokenization at this stage.",
+        s4t: "4. Territorial insights",
+        s4: "The data reveals patterns, demands and possible paths for future projects.",
+
+        hackTitle: "Why does this matter for the hackathon?",
+        hack1: "Because the project demonstrates a real technology use case for participation, community data and local development.",
+        hack2: "The blockchain layer remains a future evolution: aggregated records may become auditable without turning the current prototype into empty hype.",
+
+        whyTitle: "Why does this matter locally?",
+        why1: "Participation becomes powerful when it is organized. One isolated opinion disappears; many structured opinions become diagnosis.",
+        why2: "The goal is simple and ambitious: help small communities produce data about themselves before others decide everything for them.",
+
+        futureTitle: "Future vision",
+        future1: "UVT Localyze can be applied to culture, tourism, education, opportunities, environment, social projects and local development.",
+        future2: "At this stage, it is participation with data. Later, it can evolve into auditability, institutional integration and territorial expansion.",
+
+        back: "← Back",
+        test: "Participate now",
+
+        dashLabel: "Live panel",
+        dashBtn: "View data →"
+      },
+
+      pt: {
+        htmlLang: "pt-BR",
+        pageTitle: "Sobre | UVT Localyze",
+        metaDesc: "Entenda como o UVT Localyze transforma participação comunitária em dados territoriais estruturados para impacto local.",
+
+        badge: "Protótipo em teste",
+        title: "O que é o UVT Localyze?",
+        p1: "Uma plataforma de participação territorial que transforma ações reais da comunidade em dados organizados.",
+        p2: "A população participa, o território revela suas prioridades e os dados ajudam a orientar decisões mais inteligentes.",
+        note: "Protótipo funcional em teste com uso real no território.",
+
+        ideaTitle: "A ideia central",
+        idea1: "O UVT Localyze não cria participação do nada. Ele organiza o que já existe: opinião, presença, observação, sugestão e colaboração local.",
+        idea2: "Cada ação gera UVT como registro simbólico de participação e ajuda a formar uma leitura viva do território.",
+
+        audienceTitle: "Para quem serve",
+        a1t: "Comunidade",
+        a1: "Participa de consultas, aponta prioridades, sugere melhorias e acompanha o impacto coletivo.",
+        a2t: "Gestores e instituições",
+        a2: "Acessam dados organizados sobre demandas, interesses e sinais reais da população.",
+        a3t: "Hackathon e avaliadores",
+        a3: "Visualizam um protótipo conectado ao mundo real, com participação local e potencial de escala.",
+
+        howTitle: "Como funciona",
+        s1t: "1. Participação",
+        s1: "A pessoa responde enquetes, vota prioridades, envia sugestões, indica locais ou registra problemas.",
+        s2t: "2. Organização",
+        s2: "O sistema estrutura as informações e reduz duplicidades para evitar distorções.",
+        s3t: "3. UVT",
+        s3: "Cada contribuição gera um registro de valor territorial, sem tokenização nesta fase.",
+        s4t: "4. Leitura territorial",
+        s4: "Os dados revelam padrões, demandas e caminhos possíveis para projetos futuros.",
+
+        hackTitle: "Por que isso faz sentido para o hackathon?",
+        hack1: "Porque o projeto demonstra uma aplicação real de tecnologia para participação, dados comunitários e desenvolvimento local.",
+        hack2: "A camada blockchain fica como evolução futura: registros agregados poderão ser auditáveis, sem transformar o protótipo atual em promessa vazia.",
+
+        whyTitle: "Por que isso importa para a população?",
+        why1: "Porque participação só vira força quando é organizada. Uma opinião isolada some; muitas opiniões estruturadas viram diagnóstico.",
+        why2: "O objetivo é simples e ambicioso: ajudar comunidades pequenas a produzirem dados sobre si mesmas, antes que outros decidam tudo por elas.",
+
+        futureTitle: "Visão de futuro",
+        future1: "O UVT Localyze pode ser aplicado em cultura, turismo, educação, oportunidades, meio ambiente, projetos sociais e desenvolvimento local.",
+        future2: "Nesta fase, ele é participação com dados. No futuro, poderá ganhar camadas de auditoria, integração institucional e expansão para outros territórios.",
+
+        back: "← Voltar",
+        test: "Participar agora",
+
+        dashLabel: "Painel vivo",
+        dashBtn: "Ver dados →"
+      },
+
+      es: {
+        htmlLang: "es",
+        pageTitle: "Acerca de | UVT Localyze",
+        metaDesc: "Entiende cómo UVT Localyze transforma la participación comunitaria en datos territoriales estructurados para impacto local.",
+
+        badge: "Prototipo en prueba",
+        title: "¿Qué es UVT Localyze?",
+        p1: "Una plataforma de participación territorial que transforma acciones reales de la comunidad en datos estructurados.",
+        p2: "La población participa, el territorio revela sus prioridades y los datos ayudan a orientar mejores decisiones.",
+        note: "Prototipo funcional en prueba con uso local real.",
+
+        ideaTitle: "Idea central",
+        idea1: "UVT Localyze no inventa la participación. Organiza lo que ya existe: opinión, presencia, observación, sugerencias y colaboración local.",
+        idea2: "Cada acción genera UVT como registro simbólico de participación y ayuda a construir una lectura viva del territorio.",
+
+        audienceTitle: "Para quién sirve",
+        a1t: "Comunidad",
+        a1: "Participa en consultas, vota prioridades, sugiere mejoras y acompaña el impacto colectivo.",
+        a2t: "Gestores e instituciones",
+        a2: "Acceden a datos organizados sobre demandas, intereses y señales reales de la población.",
+        a3t: "Hackathon y evaluadores",
+        a3: "Ven un prototipo conectado al mundo real, con participación local y potencial de escala.",
+
+        howTitle: "Cómo funciona",
+        s1t: "1. Participación",
+        s1: "La persona responde consultas, vota prioridades, envía sugerencias, indica lugares o reporta problemas.",
+        s2t: "2. Organización",
+        s2: "El sistema estructura la información y reduce duplicidades para evitar distorsiones.",
+        s3t: "3. UVT",
+        s3: "Cada contribución genera un registro de valor territorial, sin tokenización en esta fase.",
+        s4t: "4. Lectura territorial",
+        s4: "Los datos revelan patrones, demandas y caminos posibles para proyectos futuros.",
+
+        hackTitle: "¿Por qué tiene sentido para el hackathon?",
+        hack1: "Porque el proyecto demuestra una aplicación real de tecnología para participación, datos comunitarios y desarrollo local.",
+        hack2: "La capa blockchain queda como evolución futura: los registros agregados podrán ser auditables sin convertir el prototipo actual en promesa vacía.",
+
+        whyTitle: "¿Por qué importa para la población?",
+        why1: "La participación solo gana fuerza cuando está organizada. Una opinión aislada desaparece; muchas opiniones estructuradas se vuelven diagnóstico.",
+        why2: "El objetivo es simple y ambicioso: ayudar a comunidades pequeñas a producir datos sobre sí mismas antes de que otros decidan todo por ellas.",
+
+        futureTitle: "Visión de futuro",
+        future1: "UVT Localyze puede aplicarse en cultura, turismo, educación, oportunidades, medio ambiente, proyectos sociales y desarrollo local.",
+        future2: "En esta fase, es participación con datos. En el futuro, podrá evolucionar hacia auditoría, integración institucional y expansión territorial.",
+
+        back: "← Volver",
+        test: "Participar ahora",
+
+        dashLabel: "Panel vivo",
+        dashBtn: "Ver datos →"
+      }
+    };
+
+    function setLang(lang) {
+      const selected = t[lang] ? lang : "en";
+      const d = t[selected];
+
+      localStorage.setItem("uvt_lang", selected);
+
+      document.documentElement.lang = d.htmlLang;
+      document.title = d.pageTitle;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", d.metaDesc);
+      }
+
+      Object.keys(d).forEach((key) => {
+        const element = document.getElementById(key);
+        if (element) {
+          element.innerText = d[key];
+        }
+      });
+    }
+
+    const savedLang = localStorage.getItem("uvt_lang") || "en";
+    setLang(savedLang);
+  </script>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script src="js/app.js?v=2"></script>
+
+</body>
+</html>
